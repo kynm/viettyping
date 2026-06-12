@@ -2,11 +2,13 @@
 
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { LogIn, UserPlus } from 'lucide-react';
+import { LogIn, UserPlus, WifiOff } from 'lucide-react';
 import Logo from '@/components/Logo';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function LoginPage() {
   const router = useRouter();
+  const { refreshUser } = useAuth();
   const [mode, setMode] = useState<'login' | 'register'>('login');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -28,6 +30,7 @@ export default function LoginPage() {
         setError(payload.error ?? 'Không thể đăng nhập.');
         return;
       }
+      await refreshUser();
       router.replace('/');
       router.refresh();
     } catch {
@@ -100,6 +103,24 @@ export default function LoginPage() {
         >
           {mode === 'login' ? 'Chưa có tài khoản? Đăng ký' : 'Đã có tài khoản? Đăng nhập'}
         </button>
+
+        <div className="my-5 flex items-center gap-3 text-xs font-black text-slate-400">
+          <span className="h-px flex-1 bg-slate-200" />
+          HOẶC
+          <span className="h-px flex-1 bg-slate-200" />
+        </div>
+
+        <button
+          type="button"
+          onClick={() => router.replace('/')}
+          className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-slate-800 bg-amber-100 px-4 py-3 font-black text-slate-800 shadow-[4px_4px_0_#1e293b]"
+        >
+          <WifiOff className="h-5 w-5" />
+          Dùng không cần đăng nhập
+        </button>
+        <p className="mt-3 text-center text-xs font-bold text-slate-500">
+          Dữ liệu chỉ được lưu trên thiết bị này.
+        </p>
       </div>
     </main>
   );

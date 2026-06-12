@@ -14,7 +14,10 @@ export default function DataSyncProvider({ children }: { children: React.ReactNo
   const [isDataReady, setIsDataReady] = useState(false);
 
   useEffect(() => {
-    if (!isLoading && !user) setIsDataReady(true);
+    if (!isLoading && !user) {
+      hydratedUserId.current = null;
+      setIsDataReady(true);
+    }
   }, [isLoading, user]);
 
   useEffect(() => {

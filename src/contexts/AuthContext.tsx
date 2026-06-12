@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { clearStoredSnapshot, readStoredSnapshot } from '@/lib/client-storage';
 
 export interface AuthUser {
@@ -21,7 +21,6 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const pathname = usePathname();
   const router = useRouter();
 
   const refreshUser = useCallback(async () => {
@@ -29,15 +28,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const response = await fetch('/api/auth/me', { cache: 'no-store' });
       if (!response.ok) {
         setUser(null);
-        if (pathname !== '/login') router.replace('/login');
         return;
       }
       const payload = await response.json();
       setUser(payload.user);
+    } catch {
+      setUser(null);
     } finally {
       setIsLoading(false);
     }
-  }, [pathname, router]);
+  }, []);
 
   useEffect(() => {
     void refreshUser();

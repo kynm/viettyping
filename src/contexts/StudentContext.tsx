@@ -34,8 +34,18 @@ export function StudentProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!user) {
-      setStudentInfo(null);
-      setIsLoaded(false);
+      try {
+        const savedProfile = localStorage.getItem(STORAGE_KEY);
+        const localProfile = savedProfile ? JSON.parse(savedProfile) as StudentInfo : null;
+        setStudentInfo(localProfile);
+        document.documentElement.setAttribute('data-theme', localProfile?.theme || 'dino');
+      } catch (error) {
+        console.error("Lỗi khi tải thông tin học sinh từ localStorage:", error);
+        setStudentInfo(null);
+        document.documentElement.setAttribute('data-theme', 'dino');
+      } finally {
+        setIsLoaded(true);
+      }
       return;
     }
     setIsLoaded(false);
@@ -83,18 +93,20 @@ export function StudentProvider({ children }: { children: ReactNode }) {
     setStudentInfo(infoWithTheme);
     try {
       setStoredValue(STORAGE_KEY, JSON.stringify(infoWithTheme));
-      void fetch('/api/profile', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(infoWithTheme),
-      });
+      if (user) {
+        void fetch('/api/profile', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(infoWithTheme),
+        });
+      }
       if (infoWithTheme.theme) {
         document.documentElement.setAttribute('data-theme', infoWithTheme.theme);
       }
     } catch (error) {
       console.error("Lỗi khi lưu thông tin học sinh vào localStorage:", error);
     }
-  }, []);
+  }, [user]);
 
   const clearStudentInfo = useCallback(() => {
     setStudentInfo(null);
