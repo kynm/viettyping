@@ -1,6 +1,6 @@
 # 🎨 Hệ Thống Thiết Kế Học Tập Phân Tầng Trực Quan (Tactile Tiered Learning)
 
-Hệ thống thiết kế **VietTyping** được xây dựng dựa trên triết lý **Tactile Play (Chơi mà học trực quan)**. Nó cân bằng giữa tính chất ngộ nghĩnh của một ứng dụng giáo dục cho trẻ em với cấu trúc tinh tế của một sản phẩm EdTech cao cấp. Giao diện người dùng mang lại cảm giác giống như một món đồ chơi vật lý—thân thiện, phản hồi nhanh và kích thích trẻ chạm vào.
+Hệ thống thiết kế **EasyTyping** được phát triển từ VietTyping và xây dựng dựa trên triết lý **Tactile Play (Chơi mà học trực quan)**. Nó cân bằng giữa tính chất ngộ nghĩnh của một ứng dụng giáo dục cho trẻ em với cấu trúc tinh tế của một sản phẩm EdTech cao cấp. Giao diện người dùng mang lại cảm giác giống như một món đồ chơi vật lý—thân thiện, phản hồi nhanh và kích thích trẻ chạm vào.
 
 Phong cách trực quan là **Tactile / Skeuomorphic Modernism (Hiện đại hóa Skeuomorphic / Trực quan nổi khối)**. Thiết kế tận dụng các khối nổi 3D nhẹ, các nút bấm lấy cảm hứng từ phím cơ (keycaps), kết hợp bảng màu ấm áp để giảm mỏi mắt cho trẻ. Mục tiêu cốt lõi là thúc đẩy cảm giác tiến bộ và thành tích thông qua các phân cấp độ khó của linh vật **"Animal Mastery" (Làm chủ động vật)**, sử dụng sự thay đổi màu sắc chủ đạo rõ rệt để báo hiệu cấp độ và trạng thái tiến bộ của bé.
 
@@ -74,7 +74,7 @@ Sử dụng màu nền giấy ngà ấm áp với viền mỏng và bóng đổ 
 
 ## 📝 Tài Nguyên Prompt AI Sinh Ảnh Đồ Họa 3D (Phong Cách Pixar/Disney)
 
-Để duy trì tính đồng bộ trực quan cao cấp trên toàn hệ thống VietTyping, dưới đây là bộ khung prompt (prompt template) chất lượng cao đã được tối ưu hóa để sinh ảnh minh họa 3D cho linh vật và các môn học khác.
+Để duy trì tính đồng bộ trực quan cao cấp trên toàn hệ thống EasyTyping, dưới đây là bộ khung prompt (prompt template) chất lượng cao đã được tối ưu hóa để sinh ảnh minh họa 3D cho linh vật và các môn học khác.
 
 ### 1. Khung Prompt Sinh Linh Vật (Mascot Template)
 > Dùng để tạo hình ảnh linh vật đơn lẻ trên nền trơn sáng màu, hỗ trợ việc tách nền và làm hình đại diện.

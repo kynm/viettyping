@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { clearStoredSnapshot, readStoredSnapshot } from '@/lib/client-storage';
 
 export interface AuthUser {
-  id: string;
+  id: number;
   username: string;
 }
 

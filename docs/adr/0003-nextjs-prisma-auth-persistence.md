@@ -1,4 +1,4 @@
-# Next.js Route Handlers and Prisma for Authentication
+﻿# Next.js Route Handlers and Prisma for Authentication
 
 ## Status
 
@@ -6,7 +6,7 @@ Accepted.
 
 ## Context
 
-VietTyping needs account isolation and durable learning progress before the planned Spring Boot backend exists. The current application is already deployed as a Next.js App Router project, while all student data is stored in browser `localStorage`.
+EasyTyping needs account isolation and durable learning progress before the planned Spring Boot backend exists. The current application is already deployed as a Next.js App Router project, while all student data is stored in browser `localStorage`.
 
 ## Decision
 

@@ -1060,7 +1060,7 @@ export default function AsmrPage() {
 
         {/* ----------------- FOOTER ----------------- */}
         <footer className="w-full max-w-6xl mx-auto px-6 pt-4 border-t-2 border-dashed border-[var(--color-foreground)]/10 text-center relative z-10 text-[11px] text-[var(--color-foreground)]/50 flex flex-col sm:flex-row justify-between items-center gap-2 mt-2">
-          <span>© 2026 VietTyping - Chúc bé gõ phím thật vui vẻ và thư thái!</span>
+          <span>© 2026 EasyTyping - Một phiên bản của VietTyping</span>
           <div className="flex gap-4">
             <span>Gõ phím cơ clicky</span>
             <span>Thư giãn tuyệt đỉnh</span>

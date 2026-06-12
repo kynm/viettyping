@@ -1,10 +1,10 @@
-# PRD: Giai đoạn 2 - Quản trị Dữ liệu Động & Hoàn thiện Luồng Học (Phase 2)
+﻿# PRD: Giai đoạn 2 - Quản trị Dữ liệu Động & Hoàn thiện Luồng Học (Phase 2)
 
 ## Problem Statement
-Trong Phase 1, ứng dụng VietTyping hoạt động dựa trên các file dữ liệu cấu trúc bài học (Lesson Config) định dạng JSON được hardcode trực tiếp vào mã nguồn. Vấn đề hiện tại là những người quản trị không có chuyên môn về lập trình (như giáo viên, phụ huynh) không thể tự tạo hay chỉnh sửa nội dung bài học một cách dễ dàng. Việc cập nhật nội dung mới yêu cầu sự can thiệp của Developer và phải build lại toàn bộ ứng dụng. 
+Trong Phase 1, ứng dụng EasyTyping hoạt động dựa trên các file dữ liệu cấu trúc bài học (Lesson Config) định dạng JSON được hardcode trực tiếp vào mã nguồn. Vấn đề hiện tại là những người quản trị không có chuyên môn về lập trình (như giáo viên, phụ huynh) không thể tự tạo hay chỉnh sửa nội dung bài học một cách dễ dàng. Việc cập nhật nội dung mới yêu cầu sự can thiệp của Developer và phải build lại toàn bộ ứng dụng.
 
 ## Solution
-Chuyển đổi VietTyping sang một kiến trúc quản trị dữ liệu động. Xây dựng một **Admin Dashboard** trực quan (sử dụng Form UI) tích hợp ngay bên trong dự án Next.js hiện tại, cho phép Admin dễ dàng tạo và quản lý bài học. Dữ liệu này sẽ được lưu trữ qua một Backend **Java Spring Boot + MySQL** độc lập. Đồng thời, hoàn thiện luồng học tập (Flow Refinement) bằng cách bổ sung màn hình Tổng kết (Stats Summary) linh hoạt, và tối ưu hóa tốc độ tải trang cho học sinh thông qua cơ chế fetch dữ liệu **SSR / ISR** của Next.js.
+Chuyển đổi EasyTyping sang một kiến trúc quản trị dữ liệu động. Xây dựng một **Admin Dashboard** trực quan (sử dụng Form UI) tích hợp ngay bên trong dự án Next.js hiện tại, cho phép Admin dễ dàng tạo và quản lý bài học. Dữ liệu này sẽ được lưu trữ qua một Backend **Java Spring Boot + MySQL** độc lập. Đồng thời, hoàn thiện luồng học tập (Flow Refinement) bằng cách bổ sung màn hình Tổng kết (Stats Summary) linh hoạt, và tối ưu hóa tốc độ tải trang cho học sinh thông qua cơ chế fetch dữ liệu **SSR / ISR** của Next.js.
 
 ## User Stories
 

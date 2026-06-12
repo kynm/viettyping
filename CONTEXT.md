@@ -1,4 +1,6 @@
-# VietTyping
+# EasyTyping
+
+> EasyTyping là một phiên bản phát triển từ dự án VietTyping. Tên dự án gốc, nền tảng ban đầu và quyền tác giả VietTyping được trân trọng ghi nhận.
 
 ## Mục tiêu & Vision
 Xây dựng một ứng dụng web giáo dục tương tác cao, tập trung chuyên sâu vào kỹ năng **luyện gõ phím (typing practice)** dành cho học sinh lớp 1 (6 tuổi). Điểm nổi bật là ứng dụng bao quát **đa dạng các môn học** trong chương trình lớp 1 (Toán, Tiếng Việt, Tự nhiên & Xã hội...), giúp trẻ vừa rèn luyện phản xạ gõ phím thành thạo, vừa ôn tập kiến thức thông qua các bài học được số hóa dưới dạng mini-game sinh động.

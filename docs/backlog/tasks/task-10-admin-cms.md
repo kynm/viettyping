@@ -1,7 +1,7 @@
-# Task 10: Admin CMS Dashboard (Phase 2)
+﻿# Task 10: Admin CMS Dashboard (Phase 2)
 
 ## 🎯 Mục tiêu
-Chuyển đổi VietTyping sang một kiến trúc quản trị dữ liệu động. Xây dựng một **Admin Dashboard** trực quan (sử dụng Form UI) tích hợp ngay bên trong dự án Next.js hiện tại, cho phép Admin dễ dàng tạo và quản lý bài học mà không cần biết lập trình.
+Chuyển đổi EasyTyping sang một kiến trúc quản trị dữ liệu động. Xây dựng một **Admin Dashboard** trực quan (sử dụng Form UI) tích hợp ngay bên trong dự án Next.js hiện tại, cho phép Admin dễ dàng tạo và quản lý bài học mà không cần biết lập trình.
 
 ## 📋 Mô tả công việc
 

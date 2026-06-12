@@ -1,8 +1,8 @@
-# Tiến Độ Dự Án VietTyping (Sprint Planning)
+﻿# Tiến Độ Dự Án EasyTyping (Sprint Planning)
 
 *Cập nhật lần cuối: 2026-05-29*
 
-Dự án VietTyping là hệ thống Web App học tiếng Việt tương tác cao dành cho trẻ 6 tuổi, dựa trên cấu trúc Lesson Config (JSON) định nghĩa bởi AI và quản lý bởi Admin. Để dễ dàng quản lý, công việc được chia thành các Sprint.
+Dự án EasyTyping là hệ thống Web App học tiếng Việt tương tác cao dành cho trẻ 6 tuổi, dựa trên cấu trúc Lesson Config (JSON) định nghĩa bởi AI và quản lý bởi Admin. Để dễ dàng quản lý, công việc được chia thành các Sprint.
 
 ---
 

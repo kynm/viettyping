@@ -1,4 +1,6 @@
-# VietTyping - Luyện Gõ Phím Đa Môn Học Cho Học Sinh Lớp 1
+# EasyTyping - Luyện Gõ Phím Đa Môn Học Cho Học Sinh Lớp 1
+
+> **Ghi nhận quyền tác giả:** EasyTyping là một phiên bản phát triển từ dự án **VietTyping**. Dự án trân trọng ghi nhận tên gọi, nền tảng ban đầu và quyền tác giả của VietTyping.
 
 Một ứng dụng web tương tác được thiết kế chuyên biệt để giúp trẻ em (đặc biệt là học sinh lớp 1) rèn luyện kỹ năng **gõ phím máy tính**, đồng thời ôn tập và tiếp thu kiến thức của **tất cả các môn học cơ bản** một cách thú vị và hiệu quả.
 
@@ -166,7 +168,7 @@ Sau khi hoàn thành bộ khung tĩnh ở Phase 1, Phase 2 sẽ tập trung vào
 
 ## 🤝 Đóng góp (Contributing)
 
-Dự án VietTyping luôn chào đón mọi sự đóng góp từ cộng đồng, đặc biệt là từ các ông bố, bà mẹ lập trình viên muốn xây dựng một ứng dụng học tập tuyệt vời cho con em mình.
+Dự án EasyTyping luôn chào đón mọi sự đóng góp từ cộng đồng, đặc biệt là từ các ông bố, bà mẹ lập trình viên muốn xây dựng một ứng dụng học tập tuyệt vời cho con em mình.
 
 * **Hướng dẫn cài đặt & gửi đóng góp**: Xem chi tiết tại [CONTRIBUTING.md](file:///Users/wanbi/Code/oss/projects/viettyping/CONTRIBUTING.md).
 * **Quy chuẩn thiết kế giao diện trẻ em**: Xem các token và quy tắc UX/UI tại [DESIGN.md](file:///Users/wanbi/Code/oss/projects/viettyping/DESIGN.md).

@@ -144,10 +144,10 @@ export default function Home() {
     <div className="flex flex-col h-full items-center justify-between py-6">
       {/* Logo Thương Hiệu */}
       <div className="w-full px-6 py-2 flex justify-center border-b-2 border-dashed border-[var(--color-foreground)]/10 pb-4">
-        <div className="flex items-center gap-2.5">
-          <Logo className="w-10 h-10" />
-          <span className="text-xl font-black bg-gradient-to-r from-[#2ecc71] via-[#3498db] to-[#e74c3c] bg-clip-text text-transparent filter drop-shadow-[0.5px_0.5px_0px_rgba(0,0,0,0.15)] select-none">
-            Việt Typing
+        <div className="flex flex-col items-center gap-1 text-center">
+          <Logo className="h-auto w-36" priority />
+          <span className="text-[9px] font-bold leading-tight text-[var(--color-foreground)]/55">
+            Một phiên bản của VietTyping
           </span>
         </div>
       </div>
@@ -510,7 +510,7 @@ export default function Home() {
           {/* Dòng bản quyền tinh tế trên nền cỏ */}
           <div className="text-center text-xs font-black text-emerald-850/60 pt-12 pb-6 max-w-2xl mx-auto flex flex-col justify-center items-center gap-2 select-none">
             <div className="flex flex-wrap justify-center items-center gap-1.5">
-              <span>VietTyping © {new Date().getFullYear()}</span>
+              <span>EasyTyping © {new Date().getFullYear()}</span>
               <span>•</span>
               <span>Phát triển bởi</span>
               <a 
@@ -527,6 +527,9 @@ export default function Home() {
                 Bản Thử Nghiệm
               </span>
             </div>
+            <p className="max-w-xl text-[10px] leading-relaxed opacity-80">
+              EasyTyping là một phiên bản phát triển từ dự án VietTyping. Tên dự án gốc và quyền tác giả VietTyping được trân trọng ghi nhận.
+            </p>
             <div className="flex gap-3 mt-1.5 opacity-80">
               <Link href="/parents" onClick={() => playSound('click')} className="hover:underline">Bảo mật</Link>
               <span>•</span>

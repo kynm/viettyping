@@ -2,9 +2,11 @@
 
 Chào bạn - những ông bố, bà mẹ lập trình viên và các bạn trẻ đam mê EdTech! 
 
-Cảm ơn bạn đã ghé thăm dự án **VietTyping** - một dự án nhỏ bắt đầu từ tình yêu thương của một người bố dành cho con trai (bé Khoai Tây), với mong muốn giúp con làm quen với máy tính và luyện gõ phím tiếng Việt một cách lành mạnh, thú vị thông qua các bài học và mini-game.
+Cảm ơn bạn đã ghé thăm dự án **EasyTyping** - một phiên bản phát triển từ **VietTyping**, dự án bắt đầu từ tình yêu thương của một người bố dành cho con trai (bé Khoai Tây), với mong muốn giúp con làm quen với máy tính và luyện gõ phím tiếng Việt một cách lành mạnh, thú vị thông qua các bài học và mini-game.
 
-Việc biến VietTyping thành một dự án mã nguồn mở (Open Source) là một cơ hội tuyệt vời để chúng ta cùng chung tay xây dựng một sân chơi bổ ích cho con em mình. Mọi đóng góp của bạn - dù là sửa một lỗi chính tả, cải tiến giao diện hay thêm một mini-game mới - đều vô cùng quý giá!
+> EasyTyping trân trọng ghi nhận tên gọi, nền tảng ban đầu và quyền tác giả của dự án VietTyping.
+
+Việc phát triển EasyTyping dưới dạng một dự án mã nguồn mở (Open Source) là một cơ hội tuyệt vời để chúng ta cùng chung tay xây dựng một sân chơi bổ ích cho con em mình. Mọi đóng góp của bạn - dù là sửa một lỗi chính tả, cải tiến giao diện hay thêm một mini-game mới - đều vô cùng quý giá!
 
 ---
 
@@ -101,6 +103,6 @@ Dự án luôn hoan nghênh sự đóng góp ở mọi khía cạnh:
 ---
 
 ## 💖 Cảm Ơn Các Bạn!
-Mỗi dòng code, mỗi ý kiến đóng góp của bạn đều giúp **VietTyping** hoàn thiện hơn, mang lại niềm vui học tập lành mạnh cho bé Khoai Tây và hàng ngàn bạn nhỏ khác tại Việt Nam.
+Mỗi dòng code, mỗi ý kiến đóng góp của bạn đều giúp **EasyTyping** hoàn thiện hơn, mang lại niềm vui học tập lành mạnh cho bé Khoai Tây và hàng ngàn bạn nhỏ khác tại Việt Nam.
 
 Cùng nhau, chúng ta hãy xây dựng một mùa hè bổ ích cho các con! 🚀✨

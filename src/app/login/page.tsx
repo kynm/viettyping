@@ -2,7 +2,8 @@
 
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Keyboard, LogIn, UserPlus } from 'lucide-react';
+import { LogIn, UserPlus } from 'lucide-react';
+import Logo from '@/components/Logo';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -40,10 +41,9 @@ export default function LoginPage() {
     <main className="flex min-h-screen items-center justify-center bg-amber-50 p-4">
       <div className="w-full max-w-md rounded-[30px] border-4 border-slate-800 bg-white p-7 shadow-[8px_8px_0_#1e293b]">
         <div className="mb-7 text-center">
-          <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl border-3 border-slate-800 bg-indigo-100">
-            <Keyboard className="h-9 w-9 text-indigo-700" />
-          </div>
-          <h1 className="text-3xl font-black text-slate-900">VietTyping</h1>
+          <Logo className="mx-auto mb-2 h-auto w-56" priority />
+          <h1 className="sr-only">EasyTyping</h1>
+          <p className="text-xs font-bold text-slate-500">Một phiên bản của VietTyping</p>
           <p className="mt-1 text-sm font-bold text-slate-500">
             {mode === 'login' ? 'Đăng nhập để tiếp tục học' : 'Tạo tài khoản học sinh mới'}
           </p>

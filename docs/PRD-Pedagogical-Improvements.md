@@ -1,8 +1,8 @@
-# PRD: Cải tiến Sư phạm & Rèn luyện Kỹ năng Chuyên biệt (Pedagogical & Fine Motor Skills Improvements)
+﻿# PRD: Cải tiến Sư phạm & Rèn luyện Kỹ năng Chuyên biệt (Pedagogical & Fine Motor Skills Improvements)
 
 ## Problem Statement
 
-Dựa trên nhận xét tổng kết từ giáo viên đối với trẻ 6 tuổi, hệ thống VietTyping hiện tại đang thiếu các giải pháp hỗ trợ chuyên biệt cho các điểm yếu sau của học sinh:
+Dựa trên nhận xét tổng kết từ giáo viên đối với trẻ 6 tuổi, hệ thống EasyTyping hiện tại đang thiếu các giải pháp hỗ trợ chuyên biệt cho các điểm yếu sau của học sinh:
 1. **Tốc độ viết/gõ phím còn chậm**: Bài tập gõ phím hiện tại chỉ kiểm tra độ chính xác, chưa hỗ trợ theo dõi, đo lường hoặc khuyến khích tốc độ gõ phù hợp để giúp bé tăng tốc độ viết.
 2. **Tính toán chưa cẩn thận & thiếu vận dụng thực tế**: Các bài tập toán học hiện tại chỉ ở dạng trắc nghiệm lý thuyết đơn giản, chưa liên hệ thực tiễn và chưa có cơ chế nhắc nhở trẻ kiểm tra kỹ lưỡng kết quả để rèn tính cẩn thận.
 3. **Kỹ năng vận động tinh (Fine Motor Skills) chưa đều**: Nhận xét "tô màu còn chưa đều" phản ánh khả năng điều khiển tay của trẻ chưa khéo léo. Ứng dụng hiện tại chưa có hoạt động vẽ/tô màu tương tác để rèn luyện kỹ năng này.

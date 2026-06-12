@@ -9,7 +9,7 @@ function hashToken(token: string) {
   return createHash('sha256').update(token).digest('hex');
 }
 
-export async function createSession(userId: string) {
+export async function createSession(userId: number) {
   const token = randomBytes(32).toString('hex');
   const expiresAt = new Date(Date.now() + SESSION_DURATION_MS);
 

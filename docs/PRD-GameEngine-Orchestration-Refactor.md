@@ -1,8 +1,8 @@
-# PRD: Tái cấu trúc Game Engine & Bộ điều phối bài học (Game Engine & Lesson Coordinator Refactor)
+﻿# PRD: Tái cấu trúc Game Engine & Bộ điều phối bài học (Game Engine & Lesson Coordinator Refactor)
 
 ## Problem Statement
 
-Hiện tại, ứng dụng VietTyping đang gặp phải các vấn đề về kiến trúc liên quan đến cách điều phối bài học (Lesson Orchestration) và sự không nhất quán giữa hai luồng học tập:
+Hiện tại, ứng dụng EasyTyping đang gặp phải các vấn đề về kiến trúc liên quan đến cách điều phối bài học (Lesson Orchestration) và sự không nhất quán giữa hai luồng học tập:
 1. **Sự phân mảnh và trùng lặp luồng học tập**: Hệ thống tồn tại song song hai luồng điều phối: `ActivityView.tsx` (dùng cho các môn học truyền thống) và chuỗi các trang route `/lesson`, `/lesson/typing`, `/lesson/games` phối hợp cùng `LessonRunner.tsx` (dùng cho cấu hình bài học `LessonConfig` mới).
 2. **Logic điều phối bị phân tán (Mất Locality)**: Logic quản lý trạng thái bài học (nhận diện hoàn thành flashcards, tính điểm XP, mở khóa huy hiệu badge, chuyển trang) hiện nằm rải rác ở các trang route (`page.tsx`). Điều này khiến mã nguồn của các trang route bị phình to, khó bảo trì và không thể viết Unit Test/Integration Test cho toàn bộ vòng đời của một bài học (Lesson) mà không phải dựng toàn bộ hệ thống định tuyến (Routing) của Next.js.
 3. **Thiếu cơ chế thu thập dữ liệu (Telemetry) chuẩn hóa**: Các component trò chơi (`MatchingGame`, `TrueFalseGame`...) và các hoạt động học tập (`QuizActivity`, `DrawingActivity`...) giao tiếp kết quả thông qua các callback khác nhau, gây khó khăn cho việc tích hợp API lưu trữ telemetry lên backend Java Spring Boot ở Phase 2.

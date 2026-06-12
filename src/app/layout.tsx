@@ -16,8 +16,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Luyện Gõ Phím Tiếng Việt',
-  description: 'Ứng dụng luyện gõ phím tiếng Việt với nhiều cấp độ từ cơ bản đến nâng cao',
+  title: 'EasyTyping - Luyện Gõ Phím Tiếng Việt',
+  description: 'EasyTyping, một phiên bản của VietTyping, giúp học sinh luyện gõ phím tiếng Việt từ cơ bản đến nâng cao.',
 }
 
 export default function RootLayout({

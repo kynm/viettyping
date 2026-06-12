@@ -427,7 +427,7 @@ export default function ReportCardAnalyzer() {
           <Sparkles className="w-5 h-5 text-[var(--color-accent)] animate-spin" style={{ animationDuration: '6s' }} />
         </h2>
         <p className="text-[var(--color-foreground)] opacity-80 text-sm md:text-base mb-6 font-semibold leading-relaxed">
-          Dán nhận xét học kỳ hoặc tổng kết của giáo viên vào ô bên dưới. Trí tuệ nhân tạo của VietTyping sẽ phân tích và lập kế hoạch rèn luyện các kỹ năng bé còn yếu thông qua trò chơi tương tác.
+          Dán nhận xét học kỳ hoặc tổng kết của giáo viên vào ô bên dưới. Trí tuệ nhân tạo của EasyTyping sẽ phân tích và lập kế hoạch rèn luyện các kỹ năng bé còn yếu thông qua trò chơi tương tác.
         </p>
 
         {/* Markdown Tabs Selector */}
@@ -527,7 +527,7 @@ export default function ReportCardAnalyzer() {
               <h3 className="text-sm font-black uppercase tracking-wider opacity-75 mb-1">Đánh giá chung cho bé</h3>
               <h1 className="text-3xl md:text-4xl font-black mb-3 text-[var(--color-foreground)]">{analysisResult.title}</h1>
               <p className="opacity-90 font-black max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-                Cô giáo đã ghi nhận sự cố gắng lớn của bé! Hãy cùng VietTyping hoàn thành lộ trình bên dưới để giúp con phát triển hoàn hảo hơn nhé!
+                Cô giáo đã ghi nhận sự cố gắng lớn của bé! Hãy cùng EasyTyping hoàn thành lộ trình bên dưới để giúp con phát triển hoàn hảo hơn nhé!
               </p>
             </div>
 

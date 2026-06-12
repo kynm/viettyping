@@ -10,7 +10,7 @@ function hasData(snapshot: StoredSnapshot) {
 
 export default function DataSyncProvider({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
-  const hydratedUserId = useRef<string | null>(null);
+  const hydratedUserId = useRef<number | null>(null);
   const [isDataReady, setIsDataReady] = useState(false);
 
   useEffect(() => {
