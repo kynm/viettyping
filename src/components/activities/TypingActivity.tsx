@@ -5,6 +5,7 @@ import TypingPractice from '@/components/TypingPractice';
 import CompletionModal from '@/components/CompletionModal';
 import { TelemetryPayload } from '@/types/lesson';
 import { useSubjectTheme } from '@/hooks/useSubjectTheme';
+import { setStoredValue } from '@/lib/client-storage';
 
 export const TypingActivity: React.FC<ActivityAdapterProps> = ({ activity, onComplete, onProgressUpdate }) => {
   const [showTypingModal, setShowTypingModal] = useState(false);
@@ -37,9 +38,9 @@ export const TypingActivity: React.FC<ActivityAdapterProps> = ({ activity, onCom
       const newAvgWpm = Math.round((avgWpm * totalLessons + stats.wpm) / newTotal);
       const newAvgAcc = Math.round((avgAcc * totalLessons + stats.accuracy) / newTotal);
       
-      localStorage.setItem('typing_total_lessons', String(newTotal));
-      localStorage.setItem('typing_avg_wpm', String(newAvgWpm));
-      localStorage.setItem('typing_avg_accuracy', String(newAvgAcc));
+      setStoredValue('typing_total_lessons', String(newTotal));
+      setStoredValue('typing_avg_wpm', String(newAvgWpm));
+      setStoredValue('typing_avg_accuracy', String(newAvgAcc));
     } catch (e) {
       console.error('Failed to update typing stats in activity:', e);
     }

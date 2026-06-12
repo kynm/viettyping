@@ -4,6 +4,9 @@ import './globals.css'
 import { SoundProvider } from '@/contexts/SoundContext'
 import { StudentProvider } from '@/contexts/StudentContext'
 import StudentConfigModal from '@/components/StudentConfigModal'
+import { AuthProvider } from '@/contexts/AuthContext'
+import DataSyncProvider from '@/components/DataSyncProvider'
+import AccountStatus from '@/components/AccountStatus'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700', '800'],
@@ -25,12 +28,17 @@ export default function RootLayout({
   return (
     <html lang="vi" className={plusJakartaSans.variable}>
       <body className={plusJakartaSans.className}>
-        <SoundProvider>
-          <StudentProvider>
-            {children}
-            <StudentConfigModal />
-          </StudentProvider>
-        </SoundProvider>
+        <AuthProvider>
+          <DataSyncProvider>
+            <SoundProvider>
+              <StudentProvider>
+                {children}
+                <StudentConfigModal />
+                <AccountStatus />
+              </StudentProvider>
+            </SoundProvider>
+          </DataSyncProvider>
+        </AuthProvider>
       </body>
     </html>
   )

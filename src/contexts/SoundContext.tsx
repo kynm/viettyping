@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { setStoredValue } from '@/lib/client-storage';
 
 type SoundType = 'correct' | 'wrong' | 'incorrect' | 'click' | 'complete' | 'tick' | 'tada' | 'keystroke' | 'keyrelease' | 'coin' | 'pop' | 'boing';
 
@@ -31,7 +32,7 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const toggleMute = () => {
     setIsMuted((prev) => {
       const newState = !prev;
-      localStorage.setItem('sound_muted', String(newState));
+      setStoredValue('sound_muted', String(newState));
       return newState;
     });
   };

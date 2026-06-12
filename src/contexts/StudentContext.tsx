@@ -1,6 +1,8 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from "react";
+import { removeStoredValue, setStoredValue } from "@/lib/client-storage";
+import { useAuth } from "@/contexts/AuthContext";
 
 export interface StudentInfo {
   name: string;      // Tên đầy đủ trên lớp
@@ -25,31 +27,53 @@ const StudentContext = createContext<StudentContextType | undefined>(undefined);
 const STORAGE_KEY = "viettyping_student_profile";
 
 export function StudentProvider({ children }: { children: ReactNode }) {
+  const { user } = useAuth();
   const [studentInfo, setStudentInfo] = useState<StudentInfo | null>(null);
   const [isOpenConfig, setIsOpenConfig] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Đọc thông tin từ localStorage khi component mount ở client-side
   useEffect(() => {
-    try {
-      const savedProfile = localStorage.getItem(STORAGE_KEY);
-      if (savedProfile) {
-        const parsed = JSON.parse(savedProfile) as StudentInfo;
-        setStudentInfo(parsed);
-        if (parsed.theme) {
-          document.documentElement.setAttribute('data-theme', parsed.theme);
+    if (!user) {
+      setStudentInfo(null);
+      setIsLoaded(false);
+      return;
+    }
+    setIsLoaded(false);
+    let cancelled = false;
+
+    async function loadProfile() {
+      try {
+        const savedProfile = localStorage.getItem(STORAGE_KEY);
+        const localProfile = savedProfile ? JSON.parse(savedProfile) as StudentInfo : null;
+        const response = await fetch('/api/profile', { cache: 'no-store' });
+        if (!response.ok || cancelled) return;
+        const payload = await response.json();
+        const serverProfile = payload.profile as StudentInfo | null;
+        const profile = serverProfile?.nickname ? serverProfile : localProfile;
+
+        if (profile) {
+          setStudentInfo(profile);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+          document.documentElement.setAttribute('data-theme', profile.theme || 'dino');
+          if (!serverProfile?.nickname && localProfile?.nickname) {
+            await fetch('/api/profile', {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(localProfile),
+            });
+          }
         } else {
           document.documentElement.setAttribute('data-theme', 'dino');
         }
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dino');
+      } catch (error) {
+        console.error("Lỗi khi tải thông tin học sinh:", error);
+      } finally {
+        if (!cancelled) setIsLoaded(true);
       }
-    } catch (error) {
-      console.error("Lỗi khi đọc thông tin học sinh từ localStorage:", error);
-    } finally {
-      setIsLoaded(true);
     }
-  }, []);
+    void loadProfile();
+    return () => { cancelled = true; };
+  }, [user]);
 
   const updateStudentInfo = useCallback((info: StudentInfo) => {
     const infoWithTheme: StudentInfo = {
@@ -58,7 +82,12 @@ export function StudentProvider({ children }: { children: ReactNode }) {
     };
     setStudentInfo(infoWithTheme);
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(infoWithTheme));
+      setStoredValue(STORAGE_KEY, JSON.stringify(infoWithTheme));
+      void fetch('/api/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(infoWithTheme),
+      });
       if (infoWithTheme.theme) {
         document.documentElement.setAttribute('data-theme', infoWithTheme.theme);
       }
@@ -70,7 +99,7 @@ export function StudentProvider({ children }: { children: ReactNode }) {
   const clearStudentInfo = useCallback(() => {
     setStudentInfo(null);
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      removeStoredValue(STORAGE_KEY);
       document.documentElement.setAttribute('data-theme', 'dino');
     } catch (error) {
       console.error("Lỗi khi xóa thông tin học sinh:", error);

@@ -47,6 +47,7 @@ Xây dựng một ứng dụng web giáo dục tương tác cao, tập trung chu
 - **Hero Section:** Thay thế icon emoji tĩnh bằng một Slide banner hoạt họa sinh động trình chiếu các môn học chính.
 - **Leaderboard động viên thân thiện:** Bảng xếp hạng được tổ chức riêng tại trang `/leaderboard` hiển thị thông tin học viên bằng Nickname và Avatar hoạt hình để bảo vệ quyền riêng tư, xếp hạng theo XP & Streak tuần/toàn thời gian, và có phần động viên cá nhân hóa ở dưới cùng cho bé nằm ngoài Top 10.
 - **Kiến trúc Admin CMS (Phase 2):** Toàn bộ 8 phân hệ quản trị sẽ được cấu trúc tập trung dưới route `/admin/*`, giao tiếp với Backend Spring Boot API và lưu trữ MySQL, sử dụng Next.js Route Handlers để bảo mật API key và Token JWT.
+- **Xác thực và lưu tiến độ ban đầu:** Dùng Next.js Route Handlers + Prisma + MySQL 8 để triển khai tài khoản, session cookie HttpOnly, hồ sơ và snapshot tiến độ ngay trong Web App. Đây là backend vận hành ban đầu; API có thể được thay bằng Spring Boot sau này mà không thay đổi contract phía client (xem ADR 0003).
 - **Kiến trúc dữ liệu:** Web App chỉ đọc tệp JSON (hoặc DB sau này), hoàn toàn không kết nối API AI theo thời gian thực để đảm bảo tốc độ và an toàn nội dung.
 - **Quản lý đáp án sai:** AI sẽ sinh sẵn các Distractor thay vì thuật toán Web App tự sinh.
 - **Loại hình bài học:** Xác định đây là Lesson Data (dữ liệu cấu trúc dành cho ứng dụng chạy mini-game), hoàn toàn không phải văn bản Markdown để phụ huynh đọc chay.

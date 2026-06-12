@@ -7,6 +7,7 @@ import { ArrowLeft, Play, Sparkles, Volume2, VolumeX, Shield, Heart, Keyboard, F
 import { useSound } from '@/contexts/SoundContext';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import confetti from 'canvas-confetti';
+import { setStoredValue } from '@/lib/client-storage';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin', 'vietnamese'],
@@ -227,8 +228,8 @@ export default function TurtleRescuePage() {
     setXp(newXp);
     
     try {
-      localStorage.setItem('typing_xp', String(newXp));
-      localStorage.setItem('viettyping_badge_turtle_rescue', 'true');
+      setStoredValue('typing_xp', String(newXp));
+      setStoredValue('viettyping_badge_turtle_rescue', 'true');
     } catch (e) {
       console.error('Failed to save rewards:', e);
     }

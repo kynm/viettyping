@@ -65,6 +65,24 @@ npm run dev
 # Mở trình duyệt và truy cập http://localhost:3000
 ```
 
+### Đăng nhập và MySQL
+
+Ứng dụng dùng Prisma và MySQL trên `127.0.0.1:3306` để lưu tài khoản, hồ sơ học sinh, tiến độ, XP và huy hiệu. Tài khoản đăng nhập bằng username chữ thường không dấu, không yêu cầu email.
+
+```bash
+# Tạo file .env từ mẫu và sửa thông tin kết nối MySQL
+cp .env.example .env
+
+# Tạo database trước, sau đó chạy migration
+npm run db:generate
+npm run db:deploy
+
+# Khởi động ứng dụng
+npm run dev
+```
+
+Mỗi tài khoản có dữ liệu học tập riêng. Khi đăng nhập lần đầu, dữ liệu cũ trong trình duyệt sẽ được chuyển lên MySQL nếu tài khoản chưa có dữ liệu; khi đăng xuất, dữ liệu local của học sinh được xóa khỏi trình duyệt.
+
 ## 📚 Cấu trúc dữ liệu
 
 ### Môn học (Subject)

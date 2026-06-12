@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local MySQL 8 development instance
+/.mysql-data/
+/.mysql-logs/

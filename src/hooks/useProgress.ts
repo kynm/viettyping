@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { setStoredValue } from '@/lib/client-storage';
 
 export interface ActivityProgress {
   score: number;
@@ -37,7 +38,7 @@ export const useProgress = () => {
           timestamp: Date.now(),
         },
       };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newProgress));
+      setStoredValue(STORAGE_KEY, JSON.stringify(newProgress));
       return newProgress;
     });
   };
@@ -60,7 +61,7 @@ export const useProgress = () => {
     setProgress((prev) => {
       const newProgress = { ...prev };
       activityIds.forEach((id) => delete newProgress[id]);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newProgress));
+      setStoredValue(STORAGE_KEY, JSON.stringify(newProgress));
       return newProgress;
     });
   };

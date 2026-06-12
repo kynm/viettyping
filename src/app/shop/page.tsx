@@ -8,6 +8,7 @@ import { useSound } from '@/contexts/SoundContext';
 import { useStudent } from '@/contexts/StudentContext';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import confetti from 'canvas-confetti';
+import { setStoredValue } from '@/lib/client-storage';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin', 'vietnamese'],
@@ -93,7 +94,7 @@ export default function ShopPage() {
       if (savedUnlocked) {
         unlockedList = JSON.parse(savedUnlocked);
       } else {
-        localStorage.setItem('viettyping_unlocked_mascots', JSON.stringify(unlockedList));
+        setStoredValue('viettyping_unlocked_mascots', JSON.stringify(unlockedList));
       }
 
       setXp(savedXp);
@@ -120,8 +121,8 @@ export default function ShopPage() {
     const newUnlocked = [...unlockedMascots, mascot.id];
 
     try {
-      localStorage.setItem('typing_xp', String(newXp));
-      localStorage.setItem('viettyping_unlocked_mascots', JSON.stringify(newUnlocked));
+      setStoredValue('typing_xp', String(newXp));
+      setStoredValue('viettyping_unlocked_mascots', JSON.stringify(newUnlocked));
       
       setXp(newXp);
       setUnlockedMascots(newUnlocked);

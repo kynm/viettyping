@@ -8,6 +8,7 @@ import CompletionModal from '@/components/CompletionModal';
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
 import { TelemetryPayload } from '@/types/lesson';
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import { setStoredValue } from '@/lib/client-storage';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin', 'vietnamese'],
@@ -54,37 +55,37 @@ export default function LessonPage({ params }: Props) {
       const completedList = JSON.parse(localStorage.getItem('typing_completed_lessons') || '[]');
       if (!completedList.includes(resolvedParams.lessonId)) {
         completedList.push(resolvedParams.lessonId);
-        localStorage.setItem('typing_completed_lessons', JSON.stringify(completedList));
+        setStoredValue('typing_completed_lessons', JSON.stringify(completedList));
       }
 
       // 2. Tính toán & Cộng thêm XP (ví dụ: gõ tốt được 100 XP, gõ xuất sắc 3 sao được 150 XP)
       const earnedXP = telemetry.score >= 90 ? 150 : 100;
       const currentXP = parseInt(localStorage.getItem('typing_xp') || '0', 10);
-      localStorage.setItem('typing_xp', String(currentXP + earnedXP));
+      setStoredValue('typing_xp', String(currentXP + earnedXP));
 
       // 3. Cập nhật Streak
       const currentStreak = parseInt(localStorage.getItem('typing_streak') || '0', 10);
-      localStorage.setItem('typing_streak', String(currentStreak + 1));
+      setStoredValue('typing_streak', String(currentStreak + 1));
 
       // 4. Lưu cờ Huy hiệu (Badges) dựa trên thành tích
       if (telemetry.score === 100) {
-        localStorage.setItem('viettyping_badge_accuracy_100', 'true');
+        setStoredValue('viettyping_badge_accuracy_100', 'true');
       }
       const wpmValue = telemetry.metadata?.wpm || 0;
       if (wpmValue >= 10) {
-        localStorage.setItem('viettyping_badge_speed_10', 'true');
+        setStoredValue('viettyping_badge_speed_10', 'true');
       }
       if (wpmValue >= 20) {
-        localStorage.setItem('viettyping_badge_speed_20', 'true');
+        setStoredValue('viettyping_badge_speed_20', 'true');
       }
       if (wpmValue >= 30) {
-        localStorage.setItem('viettyping_badge_speed_30', 'true');
+        setStoredValue('viettyping_badge_speed_30', 'true');
       }
       if (wpmValue >= 40) {
-        localStorage.setItem('viettyping_badge_speed_40', 'true');
+        setStoredValue('viettyping_badge_speed_40', 'true');
       }
       if (wpmValue >= 50) {
-        localStorage.setItem('viettyping_badge_speed_50', 'true');
+        setStoredValue('viettyping_badge_speed_50', 'true');
       }
 
       // 5. Cập nhật WPM và Accuracy trung bình lũy tiến
@@ -96,9 +97,9 @@ export default function LessonPage({ params }: Props) {
       const newAvgWpm = Math.round((avgWpm * totalLessons + wpmValue) / newTotal);
       const newAvgAcc = Math.round((avgAcc * totalLessons + telemetry.score) / newTotal);
       
-      localStorage.setItem('typing_total_lessons', String(newTotal));
-      localStorage.setItem('typing_avg_wpm', String(newAvgWpm));
-      localStorage.setItem('typing_avg_accuracy', String(newAvgAcc));
+      setStoredValue('typing_total_lessons', String(newTotal));
+      setStoredValue('typing_avg_wpm', String(newAvgWpm));
+      setStoredValue('typing_avg_accuracy', String(newAvgAcc));
     } catch (err) {
       console.error('Failed to save typing progress to localStorage:', err);
     }
