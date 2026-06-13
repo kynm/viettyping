@@ -91,6 +91,7 @@ export default function TypingPractice({ task, onComplete, onStatsChange, hideSt
   const [finalStats, setFinalStats] = useState<{ wpm: number; accuracy: number; incorrectCount: number; durationSeconds: number } | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const startTimeRef = useRef<number | null>(null);
   const timerRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const wrongSoundTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const { playCorrectSound, playWrongSound } = useTypingSound();
@@ -174,6 +175,7 @@ export default function TypingPractice({ task, onComplete, onStatsChange, hideSt
     if (!startTime) {
       const now = Date.now();
       setStartTime(now);
+      startTimeRef.current = now;
       currentStartTime = now;
       startTimer();
     }
@@ -213,7 +215,7 @@ export default function TypingPractice({ task, onComplete, onStatsChange, hideSt
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
-          const stats = calculateStats();
+          const stats = calculateStats(inputRef.current?.value || '', startTimeRef.current);
           completeLesson(stats);
           return 0;
         }
@@ -253,7 +255,9 @@ export default function TypingPractice({ task, onComplete, onStatsChange, hideSt
     setIsComplete(true);
     clearInterval(timerRef.current);
     
-    const durationSeconds = startTime ? Math.round((Date.now() - startTime) / 1000) : 0;
+    const durationSeconds = startTimeRef.current
+      ? Math.round((Date.now() - startTimeRef.current) / 1000)
+      : 0;
     
     setFinalStats({
       ...stats,
@@ -282,6 +286,7 @@ export default function TypingPractice({ task, onComplete, onStatsChange, hideSt
   const handleRestart = useCallback(() => {
     setInput('');
     setStartTime(null);
+    startTimeRef.current = null;
     setIsComplete(false);
     setTimeLeft(task.time_limit_seconds || 60);
     clearInterval(timerRef.current);

@@ -583,8 +583,19 @@ export default function TurtleRescuePage() {
       </main>
 
       {/* Footer */}
-      <footer className="py-6 shrink-0 border-t-4 border-slate-850 bg-white text-center text-xs font-black text-slate-500">
+      <footer className="py-6 shrink-0 border-t-4 border-slate-850 bg-white text-center text-xs font-black text-slate-500 flex flex-col gap-2">
         <span>Bé yêu gõ phím chính xác để đập tan chướng ngại vật bảo vệ biển cả nhé!</span>
+        <span>
+          Một sản phẩm miễn phí của{' '}
+          <a
+            href="https://easycheck.io.vn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            EasyCheck
+          </a>
+        </span>
       </footer>
 
     </div>

@@ -146,9 +146,6 @@ export default function Home() {
       <div className="w-full px-6 py-2 flex justify-center border-b-2 border-dashed border-[var(--color-foreground)]/10 pb-4">
         <div className="flex flex-col items-center gap-1 text-center">
           <Logo className="h-auto w-36" priority />
-          <span className="text-[9px] font-bold leading-tight text-[var(--color-foreground)]/55">
-            Một phiên bản của VietTyping
-          </span>
         </div>
       </div>
 
@@ -509,24 +506,18 @@ export default function Home() {
 
           {/* Dòng bản quyền tinh tế trên nền cỏ */}
           <div className="text-center text-xs font-black text-emerald-850/60 pt-12 pb-6 max-w-2xl mx-auto flex flex-col justify-center items-center gap-2 select-none">
-            <div className="flex flex-wrap justify-center items-center gap-1.5">
-              <span>EasyTyping © {new Date().getFullYear()}</span>
-              <span>•</span>
-              <span>Phát triển bởi</span>
-              <a 
-                href="http://github.com/anhnbt" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-[var(--color-primary-depth)] hover:underline font-extrabold cursor-pointer"
+            <p className="text-[11px]">
+              Một sản phẩm miễn phí của{' '}
+              <a
+                href="https://easycheck.io.vn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--color-primary-depth)] hover:underline font-extrabold"
                 onClick={() => playSound('click')}
               >
-                Nguyễn Bá Tuấn Anh
+                EasyCheck
               </a>
-              <span>•</span>
-              <span className="bg-amber-100 text-amber-800 border border-amber-300 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider shadow-[0.5px_0.5px_0px_rgba(0,0,0,0.1)]">
-                Bản Thử Nghiệm
-              </span>
-            </div>
+            </p>
             <p className="max-w-xl text-[10px] leading-relaxed opacity-80">
               EasyTyping là một phiên bản phát triển từ dự án VietTyping. Tên dự án gốc và quyền tác giả VietTyping được trân trọng ghi nhận.
             </p>

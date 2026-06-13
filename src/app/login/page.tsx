@@ -46,7 +46,6 @@ export default function LoginPage() {
         <div className="mb-7 text-center">
           <Logo className="mx-auto mb-2 h-auto w-56" priority />
           <h1 className="sr-only">EasyTyping</h1>
-          <p className="text-xs font-bold text-slate-500">Một phiên bản của VietTyping</p>
           <p className="mt-1 text-sm font-bold text-slate-500">
             {mode === 'login' ? 'Đăng nhập để tiếp tục học' : 'Tạo tài khoản học sinh mới'}
           </p>
