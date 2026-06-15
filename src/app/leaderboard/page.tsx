@@ -3,10 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Trophy, Flame, Crown, Sparkles, Medal, Play, Calendar, Zap, Heart, Lock } from 'lucide-react';
+import { ArrowLeft, Trophy, Flame, Crown, Sparkles, Medal, Play, Zap, Heart, Lock } from 'lucide-react';
 import { useSound } from '@/contexts/SoundContext';
-import { useStudent } from '@/contexts/StudentContext';
-import { weeklyLeaderboard, allTimeLeaderboard, LeaderboardUser } from '@/data/leaderboard';
+import { LeaderboardUser } from '@/lib/leaderboard';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -17,9 +16,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export default function LeaderboardPage() {
   const router = useRouter();
   const { playSound } = useSound();
-  const { studentInfo } = useStudent();
-  
-  const [activeTab, setActiveTab] = useState<'weekly' | 'alltime'>('weekly');
+  const [leaderboardUsers, setLeaderboardUsers] = useState<LeaderboardUser[]>([]);
+  const [currentUserId, setCurrentUserId] = useState<number | null>(null);
+  const [isLeaderboardLoading, setIsLeaderboardLoading] = useState(true);
+  const [leaderboardError, setLeaderboardError] = useState<string | null>(null);
   const [userXp, setUserXp] = useState<number>(0);
   const [userStreak, setUserStreak] = useState<number>(0);
   const [userWpm, setUserWpm] = useState<number>(0);
@@ -64,6 +64,23 @@ export default function LeaderboardPage() {
     } catch (e) {
       console.error('Failed to load user progress:', e);
     }
+
+    async function loadLeaderboard() {
+      try {
+        const response = await fetch('/api/leaderboard', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Không thể tải bảng xếp hạng.');
+        const payload = await response.json();
+        setLeaderboardUsers(payload.users ?? []);
+        setCurrentUserId(payload.currentUserId ?? null);
+      } catch (error) {
+        console.error('Failed to load leaderboard:', error);
+        setLeaderboardError('Chưa thể tải bảng xếp hạng. Vui lòng thử lại sau.');
+      } finally {
+        setIsLeaderboardLoading(false);
+      }
+    }
+
+    void loadLeaderboard();
   }, []);
 
   const speedBadges = [
@@ -154,39 +171,13 @@ export default function LeaderboardPage() {
     router.push('/');
   };
 
-  const handleTabChange = (tab: 'weekly' | 'alltime') => {
-    playSound('click');
-    setActiveTab(tab);
-  };
-
   if (!isMounted) return null;
 
-  // Lấy dữ liệu bảng xếp hạng hiện tại
-  const baseData = activeTab === 'weekly' ? weeklyLeaderboard : allTimeLeaderboard;
-
-  // Ghép người dùng hiện tại vào bảng xếp hạng để hiển thị thứ hạng tương đối
-  const currentUserObj: LeaderboardUser = {
-    id: 'current-user',
-    nickname: (studentInfo?.nickname ? `${studentInfo.nickname} ${studentInfo.avatar || '👤'}` : 'Bé yêu của mẹ 👤'),
-    avatar: studentInfo?.avatar || '👤',
-    xp: userXp,
-    streak: userStreak
-  };
-
-  // Sắp xếp danh sách xếp hạng có kèm người dùng hiện tại
-  const sortedWithUser = [...baseData, currentUserObj]
-    .filter((value, index, self) => self.findIndex(t => t.id === value.id) === index) // Unique
-    .sort((a, b) => b.xp - a.xp);
-
-  // Tìm thứ hạng của người dùng hiện tại
-  const userRankIndex = sortedWithUser.findIndex(u => u.id === 'current-user');
-  const userRank = userRankIndex + 1;
+  const currentUser = leaderboardUsers.find((user) => user.id === currentUserId);
+  const userRank = currentUser?.rank ?? 0;
 
   // Lọc Top 10 để hiển thị trên bảng
-  const top10List = sortedWithUser.slice(0, 10).map((user, idx) => ({
-    ...user,
-    rank: idx + 1
-  }));
+  const top10List = leaderboardUsers.slice(0, 10);
 
   // Phân chia Top 3 và các thứ hạng còn lại
   const firstRank = top10List.find(u => u.rank === 1);
@@ -196,7 +187,7 @@ export default function LeaderboardPage() {
 
   // Xác định khoảng cách XP để lọt vào Top 10
   const rank10User = top10List[9] || top10List[top10List.length - 1];
-  const diffXpToTop10 = rank10User ? Math.max(0, rank10User.xp - userXp) : 0;
+  const diffXpToTop10 = rank10User ? Math.max(0, rank10User.xp - (currentUser?.xp ?? userXp)) : 0;
 
   return (
     <div className={`canvas-bg bg-background text-foreground transition-colors min-h-screen relative pb-28 ${plusJakartaSans.className}`}>
@@ -281,31 +272,18 @@ export default function LeaderboardPage() {
           </p>
         </div>
 
-        {/* Switch Tabs (Weekly vs Alltime) */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex bg-[var(--color-surface-container)] border-4 border-[var(--color-foreground)] rounded-[24px] p-1.5 shadow-[4px_4px_0px_0px_var(--color-foreground)]">
-            <button
-              onClick={() => handleTabChange('weekly')}
-              className={`px-6 py-2.5 rounded-[18px] text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
-                activeTab === 'weekly'
-                  ? 'bg-[var(--color-primary)] text-white border-2 border-[var(--color-foreground)] shadow-[2px_2px_0px_0px_var(--color-foreground)]'
-                  : 'text-[var(--color-foreground)] opacity-70 hover:opacity-100 bg-transparent border-2 border-transparent'
-              }`}
-            >
-              <Calendar className="w-4 h-4" /> Tuần Này
-            </button>
-            <button
-              onClick={() => handleTabChange('alltime')}
-              className={`px-6 py-2.5 rounded-[18px] text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
-                activeTab === 'alltime'
-                  ? 'bg-[var(--color-primary)] text-white border-2 border-[var(--color-foreground)] shadow-[2px_2px_0px_0px_var(--color-foreground)]'
-                  : 'text-[var(--color-foreground)] opacity-70 hover:opacity-100 bg-transparent border-2 border-transparent'
-              }`}
-            >
-              <Crown className="w-4 h-4 text-yellow-500 fill-yellow-300" /> Cao Thủ All-Time
-            </button>
+          <div className="inline-flex items-center gap-2 bg-[var(--color-primary)] text-white border-4 border-[var(--color-foreground)] rounded-[24px] px-6 py-3 shadow-[4px_4px_0px_0px_var(--color-foreground)] font-black text-sm">
+            <Crown className="w-4 h-4 text-yellow-300 fill-yellow-300" />
+            Xếp hạng tổng XP của các tài khoản
           </div>
         </div>
+
+        {(isLeaderboardLoading || leaderboardError) && (
+          <div className="mb-8 rounded-2xl border-2 border-[var(--color-foreground)] bg-[var(--color-surface)] p-4 text-center text-sm font-black text-[var(--color-foreground)]">
+            {isLeaderboardLoading ? 'Đang tải bảng xếp hạng...' : leaderboardError}
+          </div>
+        )}
 
         {/* Top 3 Vinh Danh - Bục 3D */}
         <div className="flex justify-center items-end gap-3 md:gap-8 mb-12 px-4 select-none">
@@ -395,7 +373,7 @@ export default function LeaderboardPage() {
           className="space-y-3 bg-[var(--color-surface)] border-4 border-[var(--color-foreground)] rounded-[28px] p-4 md:p-6 shadow-[6px_6px_0px_0px_var(--color-foreground)] transition-colors"
         >
           {restList.map((user) => {
-            const isMe = user.id === 'current-user';
+            const isMe = user.id === currentUserId;
             
             return (
               <motion.div
@@ -555,10 +533,10 @@ export default function LeaderboardPage() {
               <div className="text-left">
                 <h4 className="text-slate-900 font-black text-sm md:text-base flex items-center gap-1.5">
                   <span>Hạng hiện tại của con: </span>
-                  <span className="text-indigo-600 font-extrabold text-base">#{userRank}</span>
+                  <span className="text-indigo-600 font-extrabold text-base">{userRank ? `#${userRank}` : '--'}</span>
                 </h4>
                 <p className="text-xs text-slate-500 font-semibold mt-0.5">
-                  {userRank <= 10 ? (
+                  {userRank > 0 && userRank <= 10 ? (
                     <span className="text-emerald-600 font-bold">Thật tuyệt vời! Con đang nằm trong Top 10 bảng vàng học tập đó!</span>
                   ) : (
                     <span>Chỉ cần tích lũy thêm <span className="text-amber-600 font-extrabold">{diffXpToTop10} XP</span> nữa là lọt vào Top 10 rồi!</span>
@@ -572,7 +550,7 @@ export default function LeaderboardPage() {
               className="keycap-btn-secondary w-full sm:w-auto px-6 py-3.5 text-sm"
             >
               <Play className="w-4 h-4 text-white fill-white mr-1" />
-              <span>{userRank <= 10 ? 'Học Để Giữ Hạng!' : 'Gõ Phím Đua Top Ngay!'}</span>
+              <span>{userRank > 0 && userRank <= 10 ? 'Học Để Giữ Hạng!' : 'Gõ Phím Đua Top Ngay!'}</span>
             </button>
           </div>
         </div>
