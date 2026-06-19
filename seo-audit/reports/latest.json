@@ -1,0 +1,806 @@
+{
+  "generatedAt": "2026-06-19T05:20:00.397Z",
+  "target": "https://easycheck.io.vn/",
+  "totalScore": 57,
+  "groupScores": {
+    "technical": 14.3,
+    "onpage": 7.1,
+    "content": 10,
+    "schema": 12.5,
+    "aiReadiness": 13.3
+  },
+  "summary": {
+    "checkedUrls": 3,
+    "critical": 6,
+    "warning": 16,
+    "notice": 18
+  },
+  "urls": [
+    "https://easycheck.io.vn/",
+    "https://easycheck.io.vn/gioi-thieu",
+    "https://easycheck.io.vn/huong-dan"
+  ],
+  "pageScores": [
+    {
+      "url": "https://easycheck.io.vn/",
+      "score": 42,
+      "status": 200,
+      "responseMs": 13474,
+      "htmlBytes": 83323,
+      "compressed": true,
+      "estimatedRequests": 39,
+      "resources": {
+        "css": 14,
+        "js": 17,
+        "images": 7
+      },
+      "words": 870
+    },
+    {
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "score": 35,
+      "status": 0,
+      "responseMs": 15047,
+      "htmlBytes": 0,
+      "compressed": false,
+      "estimatedRequests": 1,
+      "resources": {
+        "css": 0,
+        "js": 0,
+        "images": 0
+      },
+      "words": 0
+    },
+    {
+      "url": "https://easycheck.io.vn/huong-dan",
+      "score": 35,
+      "status": 0,
+      "responseMs": 15047,
+      "htmlBytes": 0,
+      "compressed": false,
+      "estimatedRequests": 1,
+      "resources": {
+        "css": 0,
+        "js": 0,
+        "images": 0
+      },
+      "words": 0
+    }
+  ],
+  "topUrls": [
+    {
+      "url": "https://easycheck.io.vn/",
+      "score": 42,
+      "status": 200,
+      "responseMs": 13474,
+      "htmlBytes": 83323,
+      "compressed": true,
+      "estimatedRequests": 39,
+      "resources": {
+        "css": 14,
+        "js": 17,
+        "images": 7
+      },
+      "words": 870
+    },
+    {
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "score": 35,
+      "status": 0,
+      "responseMs": 15047,
+      "htmlBytes": 0,
+      "compressed": false,
+      "estimatedRequests": 1,
+      "resources": {
+        "css": 0,
+        "js": 0,
+        "images": 0
+      },
+      "words": 0
+    },
+    {
+      "url": "https://easycheck.io.vn/huong-dan",
+      "score": 35,
+      "status": 0,
+      "responseMs": 15047,
+      "htmlBytes": 0,
+      "compressed": false,
+      "estimatedRequests": 1,
+      "resources": {
+        "css": 0,
+        "js": 0,
+        "images": 0
+      },
+      "words": 0
+    }
+  ],
+  "priorityUrls": [
+    {
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "score": 35,
+      "status": 0,
+      "responseMs": 15047,
+      "htmlBytes": 0,
+      "compressed": false,
+      "estimatedRequests": 1,
+      "resources": {
+        "css": 0,
+        "js": 0,
+        "images": 0
+      },
+      "words": 0
+    },
+    {
+      "url": "https://easycheck.io.vn/huong-dan",
+      "score": 35,
+      "status": 0,
+      "responseMs": 15047,
+      "htmlBytes": 0,
+      "compressed": false,
+      "estimatedRequests": 1,
+      "resources": {
+        "css": 0,
+        "js": 0,
+        "images": 0
+      },
+      "words": 0
+    },
+    {
+      "url": "https://easycheck.io.vn/",
+      "score": 42,
+      "status": 200,
+      "responseMs": 13474,
+      "htmlBytes": 83323,
+      "compressed": true,
+      "estimatedRequests": 39,
+      "resources": {
+        "css": 14,
+        "js": 17,
+        "images": 7
+      },
+      "words": 870
+    }
+  ],
+  "issues": [
+    {
+      "severity": "warning",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/",
+      "message": "Title dài 69 ký tự",
+      "suggestion": "Điều chỉnh title về 30–60 ký tự."
+    },
+    {
+      "severity": "notice",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/",
+      "message": "OpenGraph chưa đầy đủ",
+      "suggestion": "Bổ sung og:title, og:description và og:image."
+    },
+    {
+      "severity": "warning",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/",
+      "message": "1 ảnh thiếu alt",
+      "suggestion": "Thêm alt mô tả đúng ngữ cảnh."
+    },
+    {
+      "severity": "warning",
+      "group": "schema",
+      "url": "https://easycheck.io.vn/",
+      "message": "WebPage thiếu description",
+      "suggestion": "Sửa JSON-LD và các trường bắt buộc theo loại trang."
+    },
+    {
+      "severity": "warning",
+      "group": "schema",
+      "url": "https://easycheck.io.vn/",
+      "message": "Organization thiếu description",
+      "suggestion": "Sửa JSON-LD và các trường bắt buộc theo loại trang."
+    },
+    {
+      "severity": "warning",
+      "group": "schema",
+      "url": "https://easycheck.io.vn/",
+      "message": "WebSite thiếu description",
+      "suggestion": "Sửa JSON-LD và các trường bắt buộc theo loại trang."
+    },
+    {
+      "severity": "warning",
+      "group": "technical",
+      "url": "https://easycheck.io.vn/",
+      "message": "Phản hồi chậm: 13474 ms",
+      "suggestion": "Tối ưu cache, máy chủ và tài nguyên chặn hiển thị."
+    },
+    {
+      "severity": "critical",
+      "group": "technical",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "HTTP status Timeout",
+      "suggestion": "Khôi phục URL hoặc chuyển hướng hợp lệ."
+    },
+    {
+      "severity": "critical",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "Thiếu title",
+      "suggestion": "Thêm title duy nhất dài 30–60 ký tự."
+    },
+    {
+      "severity": "critical",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "Thiếu meta description",
+      "suggestion": "Thêm description duy nhất dài 120–160 ký tự."
+    },
+    {
+      "severity": "warning",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "Có 0 thẻ H1",
+      "suggestion": "Mỗi trang nên có đúng một H1."
+    },
+    {
+      "severity": "warning",
+      "group": "technical",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "Thiếu canonical",
+      "suggestion": "Thêm canonical tự tham chiếu hợp lệ."
+    },
+    {
+      "severity": "notice",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "OpenGraph chưa đầy đủ",
+      "suggestion": "Bổ sung og:title, og:description và og:image."
+    },
+    {
+      "severity": "notice",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "Thiếu Twitter Card",
+      "suggestion": "Bổ sung twitter:card và metadata liên quan."
+    },
+    {
+      "severity": "warning",
+      "group": "content",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "Thiếu CTA rõ ràng",
+      "suggestion": "Thêm CTA phù hợp như dùng thử, liên hệ hoặc xem bảng giá."
+    },
+    {
+      "severity": "warning",
+      "group": "schema",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "Thiếu JSON-LD",
+      "suggestion": "Sửa JSON-LD và các trường bắt buộc theo loại trang."
+    },
+    {
+      "severity": "warning",
+      "group": "technical",
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "message": "Phản hồi chậm: 15047 ms",
+      "suggestion": "Tối ưu cache, máy chủ và tài nguyên chặn hiển thị."
+    },
+    {
+      "severity": "critical",
+      "group": "technical",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "HTTP status Timeout",
+      "suggestion": "Khôi phục URL hoặc chuyển hướng hợp lệ."
+    },
+    {
+      "severity": "critical",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "Thiếu title",
+      "suggestion": "Thêm title duy nhất dài 30–60 ký tự."
+    },
+    {
+      "severity": "critical",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "Thiếu meta description",
+      "suggestion": "Thêm description duy nhất dài 120–160 ký tự."
+    },
+    {
+      "severity": "warning",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "Có 0 thẻ H1",
+      "suggestion": "Mỗi trang nên có đúng một H1."
+    },
+    {
+      "severity": "warning",
+      "group": "technical",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "Thiếu canonical",
+      "suggestion": "Thêm canonical tự tham chiếu hợp lệ."
+    },
+    {
+      "severity": "notice",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "OpenGraph chưa đầy đủ",
+      "suggestion": "Bổ sung og:title, og:description và og:image."
+    },
+    {
+      "severity": "notice",
+      "group": "onpage",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "Thiếu Twitter Card",
+      "suggestion": "Bổ sung twitter:card và metadata liên quan."
+    },
+    {
+      "severity": "warning",
+      "group": "content",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "Thiếu CTA rõ ràng",
+      "suggestion": "Thêm CTA phù hợp như dùng thử, liên hệ hoặc xem bảng giá."
+    },
+    {
+      "severity": "warning",
+      "group": "schema",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "Thiếu JSON-LD",
+      "suggestion": "Sửa JSON-LD và các trường bắt buộc theo loại trang."
+    },
+    {
+      "severity": "warning",
+      "group": "technical",
+      "url": "https://easycheck.io.vn/huong-dan",
+      "message": "Phản hồi chậm: 15047 ms",
+      "suggestion": "Tối ưu cache, máy chủ và tài nguyên chặn hiển thị."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm quản lý trung tâm ngoại ngữ",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm quản lý trung tâm tiếng Anh",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm quản lý học sinh",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm quản lý học phí",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm điểm danh QR Code",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm quản lý lớp học",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm quản lý giáo viên",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm quản lý trường học",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm quản lý trung tâm đào tạo",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: phần mềm quản lý trung tâm giáo dục",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: EasyCheck quản lý trung tâm",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: EasyCheck điểm danh QR",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    },
+    {
+      "severity": "notice",
+      "group": "content",
+      "url": "https://easycheck.io.vn/",
+      "message": "Content Gap: EasyCheck học phí",
+      "suggestion": "Tạo hoặc tối ưu landing page đúng ý định tìm kiếm."
+    }
+  ],
+  "brokenLinks": [],
+  "missingSchema": [
+    "https://easycheck.io.vn/gioi-thieu",
+    "https://easycheck.io.vn/huong-dan"
+  ],
+  "missingMeta": [
+    "https://easycheck.io.vn/gioi-thieu",
+    "https://easycheck.io.vn/huong-dan"
+  ],
+  "thinContent": [
+    {
+      "url": "https://easycheck.io.vn/gioi-thieu",
+      "words": 0
+    },
+    {
+      "url": "https://easycheck.io.vn/huong-dan",
+      "words": 0
+    }
+  ],
+  "missingCta": [
+    "https://easycheck.io.vn/gioi-thieu",
+    "https://easycheck.io.vn/huong-dan"
+  ],
+  "contentGaps": [
+    {
+      "keyword": "phần mềm quản lý trung tâm ngoại ngữ",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý trung tâm tiếng Anh",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý học sinh",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý học phí",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm điểm danh QR Code",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý lớp học",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý giáo viên",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý trường học",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý trung tâm đào tạo",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý trung tâm giáo dục",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "EasyCheck quản lý trung tâm",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "EasyCheck điểm danh QR",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "EasyCheck học phí",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    }
+  ],
+  "keywords": [
+    {
+      "keyword": "phần mềm quản lý trung tâm ngoại ngữ",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý trung tâm tiếng Anh",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý học sinh",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý học phí",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm điểm danh QR Code",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý lớp học",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý giáo viên",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý trường học",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý trung tâm đào tạo",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "phần mềm quản lý trung tâm giáo dục",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "EasyCheck",
+      "landingPage": "https://easycheck.io.vn/",
+      "title": true,
+      "meta": true,
+      "h1": false,
+      "occurrences": 14,
+      "status": "covered"
+    },
+    {
+      "keyword": "EasyCheck quản lý trung tâm",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "EasyCheck điểm danh QR",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    },
+    {
+      "keyword": "EasyCheck học phí",
+      "landingPage": null,
+      "title": false,
+      "meta": false,
+      "h1": false,
+      "occurrences": 0,
+      "status": "content-gap"
+    }
+  ],
+  "aiReadiness": {
+    "checks": {
+      "directDefinition": true,
+      "faq": true,
+      "faqSchema": true,
+      "pricing": true,
+      "services": true,
+      "comparison": true,
+      "brandConsistency": false,
+      "contact": true,
+      "structuredData": true
+    },
+    "prompts": [
+      {
+        "prompt": "EasyCheck là gì?",
+        "ready": false
+      },
+      {
+        "prompt": "Phần mềm nào quản lý trung tâm ngoại ngữ tốt tại Việt Nam?",
+        "ready": true
+      },
+      {
+        "prompt": "Có phần mềm nào hỗ trợ điểm danh QR Code cho học sinh không?",
+        "ready": true
+      },
+      {
+        "prompt": "Phần mềm nào giúp quản lý học phí trung tâm tiếng Anh?",
+        "ready": true
+      },
+      {
+        "prompt": "EasyCheck có phù hợp cho trường học không?",
+        "ready": true
+      },
+      {
+        "prompt": "EasyCheck khác gì so với Excel?",
+        "ready": true
+      },
+      {
+        "prompt": "EasyCheck có bảng giá không?",
+        "ready": true
+      },
+      {
+        "prompt": "EasyCheck có hỗ trợ phụ huynh không?",
+        "ready": true
+      }
+    ]
+  },
+  "detectedSchemaTypes": [
+    "WebPage",
+    "BreadcrumbList",
+    "WebSite",
+    "Organization",
+    "SoftwareApplication",
+    "FAQPage"
+  ],
+  "infrastructure": {
+    "robots": {
+      "found": true,
+      "status": 200
+    },
+    "sitemapFound": true
+  },
+  "history": [
+    {
+      "date": "2026-06-19T05:17:47.918Z",
+      "total_score": 54,
+      "technical_score": 14.3,
+      "onpage_score": 7.1,
+      "content_score": 6.7,
+      "schema_score": 12.5,
+      "ai_readiness_score": 13.3,
+      "checked_urls": 20,
+      "critical_count": 57,
+      "warning_count": 117,
+      "notice_count": 52
+    },
+    {
+      "date": "2026-06-19T05:20:00.397Z",
+      "total_score": 57,
+      "technical_score": 14.3,
+      "onpage_score": 7.1,
+      "content_score": 10,
+      "schema_score": 12.5,
+      "ai_readiness_score": 13.3,
+      "checked_urls": 3,
+      "critical_count": 6,
+      "warning_count": 16,
+      "notice_count": 18
+    }
+  ]
+}

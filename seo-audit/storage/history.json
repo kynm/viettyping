@@ -1,0 +1,28 @@
+[
+  {
+    "date": "2026-06-19T05:17:47.918Z",
+    "total_score": 54,
+    "technical_score": 14.3,
+    "onpage_score": 7.1,
+    "content_score": 6.7,
+    "schema_score": 12.5,
+    "ai_readiness_score": 13.3,
+    "checked_urls": 20,
+    "critical_count": 57,
+    "warning_count": 117,
+    "notice_count": 52
+  },
+  {
+    "date": "2026-06-19T05:20:00.397Z",
+    "total_score": 57,
+    "technical_score": 14.3,
+    "onpage_score": 7.1,
+    "content_score": 10,
+    "schema_score": 12.5,
+    "ai_readiness_score": 13.3,
+    "checked_urls": 3,
+    "critical_count": 6,
+    "warning_count": 16,
+    "notice_count": 18
+  }
+]

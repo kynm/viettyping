@@ -1,0 +1,15 @@
+{
+  "technical": 25,
+  "onpage": 25,
+  "content": 20,
+  "schema": 15,
+  "aiReadiness": 15,
+  "thresholds": {
+    "goodResponseMs": 1000,
+    "titleMin": 30,
+    "titleMax": 60,
+    "descriptionMin": 120,
+    "descriptionMax": 160,
+    "thinContentWords": 800
+  }
+}

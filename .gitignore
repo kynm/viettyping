@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# Local SEO audit secrets and runtime log
+seo-audit/config/telegram.json
+seo-audit/storage/audit.log
+
 # debug
 npm-debug.log*
 yarn-debug.log*

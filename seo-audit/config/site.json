@@ -1,0 +1,14 @@
+{
+  "baseUrl": "https://easycheck.io.vn/",
+  "allowedHosts": ["easycheck.io.vn", "www.easycheck.io.vn"],
+  "maxUrls": 200,
+  "concurrency": 3,
+  "requestDelayMs": 350,
+  "timeoutMs": 15000,
+  "userAgent": "EasyCheckSEOAuditBot/1.0",
+  "excludePathPatterns": [
+    "/admin", "/login", "/logout", "/dang-nhap", "/wp-admin",
+    "delete", "action=", "remove", "destroy"
+  ],
+  "mainLandingPaths": ["/", "/bang-gia", "/dich-vu", "/tinh-nang", "/easycheck-la-gi"]
+}

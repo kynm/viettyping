@@ -1,0 +1,5 @@
+{
+  "enabled": false,
+  "botToken": "YOUR_BOT_TOKEN",
+  "chatId": "YOUR_CHAT_ID"
+}
