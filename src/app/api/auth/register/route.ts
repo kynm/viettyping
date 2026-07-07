@@ -2,10 +2,20 @@ import { hash } from 'bcryptjs';
 import { NextResponse } from 'next/server';
 import { createSession } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { consumeRateLimit, getClientIp, readJsonBody, validateSameOriginRequest } from '@/lib/security';
 import { normalizeUsername, validateCredentials } from '@/lib/validation';
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => ({}));
+  const originError = validateSameOriginRequest(request);
+  if (originError) return originError;
+
+  const ip = getClientIp(request);
+  const rateLimitError = consumeRateLimit(`register:${ip}`, { limit: 5, windowMs: 60 * 60 * 1000 });
+  if (rateLimitError) return rateLimitError;
+
+  const { body, response } = await readJsonBody(request, { maxBytes: 4096 });
+  if (response) return response;
+
   const username = normalizeUsername(body.username);
   const error = validateCredentials(username, body.password);
   if (error) return NextResponse.json({ error }, { status: 400 });

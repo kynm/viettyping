@@ -8,6 +8,8 @@ import { GameAdapterProps, TelemetryPayload, Flashcard, SpinWheelItem } from "@/
 import { useStudent } from "@/contexts/StudentContext";
 import { useSound } from "@/contexts/SoundContext";
 
+export type SpinWheelGameConfig = SpinWheelItem;
+
 const isEmoji = (url: string) => {
   if (!url) return false;
   return !url.includes('/') && !url.includes('.') && url.length < 10;

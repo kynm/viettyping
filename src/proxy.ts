@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-export function middleware(request: NextRequest) {
+
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const hasSession = request.cookies.has('viettyping_session');
 
   if (hasSession && pathname === '/login') {
     return NextResponse.redirect(new URL('/', request.url));
   }
+
   return NextResponse.next();
 }
 

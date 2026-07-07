@@ -66,6 +66,7 @@ jest.mock('@/contexts/SoundContext', () => ({
 describe('SpinWheelGame', () => {
   const mockConfig: SpinWheelGameConfig = {
     id: 'spin-test-game',
+    type: 'spin_wheel_items',
     items: ['ba', 'bò', 'ca']
   };
 

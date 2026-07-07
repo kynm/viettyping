@@ -23,6 +23,7 @@ export async function createSession(userId: number) {
     sameSite: 'lax',
     secure: process.env.NODE_ENV === 'production',
     path: '/',
+    maxAge: Math.floor(SESSION_DURATION_MS / 1000),
     expires: expiresAt,
   });
 }
@@ -51,5 +52,12 @@ export async function deleteCurrentSession() {
   if (token) {
     await prisma.session.deleteMany({ where: { tokenHash: hashToken(token) } });
   }
-  cookieStore.delete(SESSION_COOKIE);
+  cookieStore.set(SESSION_COOKIE, '', {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    path: '/',
+    maxAge: 0,
+    expires: new Date(0),
+  });
 }

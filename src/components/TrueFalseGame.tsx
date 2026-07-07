@@ -23,7 +23,9 @@ export interface TrueFalseGameConfig {
   items: MappedTrueFalseItem[];
 }
 
-export default function TrueFalseGame({ gameConfig, flashcards = [], onComplete }: GameAdapterProps<TrueFalseItem>) {
+type TrueFalseGameProps = GameAdapterProps<TrueFalseItem | TrueFalseGameConfig>;
+
+export default function TrueFalseGame({ gameConfig, flashcards = [], onComplete }: TrueFalseGameProps) {
   const { id: gameId, items } = gameConfig;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayedWord, setDisplayedWord] = useState("");

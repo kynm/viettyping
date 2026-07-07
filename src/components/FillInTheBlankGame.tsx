@@ -6,6 +6,8 @@ import confetti from "canvas-confetti";
 import { GameAdapterProps, TelemetryPayload, FillInTheBlankItem } from "@/types/lesson";
 import { useSound } from "@/contexts/SoundContext";
 
+export type FillInTheBlankGameConfig = FillInTheBlankItem;
+
 const VIETNAMESE_CHARS = "aăâeêioôơuưyáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵbcdđghklmnpqrstvx".split("");
 
 export default function FillInTheBlankGame({ gameConfig, flashcards = [], onComplete }: GameAdapterProps<FillInTheBlankItem>) {

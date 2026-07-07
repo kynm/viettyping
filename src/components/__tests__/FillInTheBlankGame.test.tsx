@@ -44,6 +44,7 @@ global.Audio = jest.fn().mockImplementation(() => ({
 describe('FillInTheBlankGame', () => {
   const mockConfig: FillInTheBlankGameConfig = {
     id: 'blank-test-game',
+    type: 'fill_in_the_blank',
     items: [
       { full_word: 'ba', missing_char: 'a', sentence: 'b_' },
       { full_word: 'bò', missing_char: 'ò', sentence: 'b_' }

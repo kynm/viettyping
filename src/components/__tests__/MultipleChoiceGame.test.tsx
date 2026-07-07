@@ -44,6 +44,7 @@ global.Audio = jest.fn().mockImplementation(() => ({
 describe('MultipleChoiceGame', () => {
   const mockConfig: MultipleChoiceGameConfig = {
     id: 'mc-test-game',
+    type: 'multiple_choice',
     items: [
       { question: 'Con gì kêu meo meo?', correct_answer: 'Mèo', distractors: ['Chó', 'Gà'] },
       { question: 'Quả gì màu đỏ?', correct_answer: 'Táo', distractors: ['Nho', 'Chuối'] }

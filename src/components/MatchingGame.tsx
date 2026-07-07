@@ -27,6 +27,8 @@ export interface MatchingGameConfig {
   items: MappedMatchingItem[];
 }
 
+type MatchingGameProps = GameAdapterProps<MatchingGameItem | MatchingGameConfig>;
+
 // Draggable Component
 function DraggableWord({ id, word }: { id: string; word: string }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id });
@@ -123,7 +125,7 @@ function DroppableSlot({
   );
 }
 
-export default function MatchingGame({ gameConfig, flashcards = [], onComplete }: GameAdapterProps<MatchingGameItem>) {
+export default function MatchingGame({ gameConfig, flashcards = [], onComplete }: MatchingGameProps) {
   const { id: gameId, items: rawItems } = gameConfig;
   const { playSound } = useSound();
   const [matches, setMatches] = useState<Record<string, string>>({}); // Slot ID -> Word ID

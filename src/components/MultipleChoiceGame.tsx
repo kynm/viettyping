@@ -7,6 +7,8 @@ import confetti from "canvas-confetti";
 import { GameAdapterProps, TelemetryPayload, Flashcard, MultipleChoiceItem } from "@/types/lesson";
 import { useSound } from "@/contexts/SoundContext";
 
+export type MultipleChoiceGameConfig = MultipleChoiceItem;
+
 // Utility to shuffle an array
 const shuffleArray = <T,>(array: T[]): T[] => {
   const newArray = [...array];

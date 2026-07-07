@@ -1,0 +1,22 @@
+# ==============================
+# EasyCheck Security Rules
+# Block sensitive files
+# ==============================
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(\.env|\.env\..*|composer\.json|composer\.lock|package\.json|package-lock\.json|yarn\.lock|pnpm-lock\.yaml|phpunit\.xml|webpack\.mix\.js|vite\.config\.js)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(\.sql|\.bak|\.old|\.zip|\.rar|\.7z|\.tar|\.gz|\.log)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(shell|cmd|wso|c99|r57|adminer|phpinfo|info|test)\.php$">
+    Require all denied
+</FilesMatch>
+
+Options -Indexes
