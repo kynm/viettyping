@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { IoChevronBack, IoChevronForward, IoPlay, IoRibbon, IoWalkOutline, IoMusicalNotesOutline, IoTimeOutline, IoStar } from "react-icons/io5";
+import { IoChevronBack, IoChevronForward, IoPlay, IoRibbon, IoMusicalNotesOutline, IoTimeOutline, IoStar } from "react-icons/io5";
 import { LessonConfig, LessonStep, ActivityResult, LessonSummary, TelemetryPayload, MiniGameConfig } from "@/types/lesson";
 import Flashcard from "@/components/Flashcard";
 import ProgressBar from "@/components/ProgressBar";
@@ -66,7 +66,7 @@ export default function LessonCoordinator({
   const [pomodoroState, setPomodoroState] = useState<"FOCUS" | "BREAK">("FOCUS");
   const [pomodoroTimeLeft, setPomodoroTimeLeft] = useState(0);
   const [focusProgress, setFocusProgress] = useState(0); // seed growth progress (0 to 100)
-  const [idleTime, setIdleTime] = useState(0);
+  const [, setIdleTime] = useState(0);
   const [showIdleReminder, setShowIdleReminder] = useState(false);
   const [breakType, setBreakType] = useState<"stretch" | "music">("stretch");
 

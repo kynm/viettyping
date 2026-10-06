@@ -5,15 +5,12 @@ import { lessons, Lesson } from '@/data/lessons';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useSound } from '@/contexts/SoundContext';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { plusJakartaSans } from '@/lib/fonts';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, BookOpen, Keyboard, Sparkles, Trophy, Lightbulb, ArrowLeft, Lock } from 'lucide-react';
+import { Check, Sparkles, Trophy, Lightbulb, ArrowLeft, Lock } from 'lucide-react';
 import VisualWorldBackground from '@/components/VisualWorldBackground';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700', '800']
-});
+
 
 const levelNames: Record<string, { name: string; description: string; color: string; icon: string; bgClass: string; borderClass: string; accentColor: string }> = {
   basic: {

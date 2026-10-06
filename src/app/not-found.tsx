@@ -1,17 +1,14 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+
 import { useRouter } from 'next/navigation';
 import { useSound } from '@/contexts/SoundContext';
 import { motion } from 'framer-motion';
-import { Home, Keyboard, Search, Sparkles } from 'lucide-react';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Home, Keyboard, Search } from 'lucide-react';
+import { plusJakartaSans } from '@/lib/fonts';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700', '800']
-});
+
 
 export default function NotFound() {
   const router = useRouter();
@@ -135,4 +132,3 @@ export default function NotFound() {
     </main>
   );
 }
-

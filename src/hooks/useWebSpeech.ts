@@ -6,13 +6,27 @@ export interface UseWebSpeechOptions {
   pitch?: number;
 }
 
+interface SpeechRecognitionInstance {
+  continuous: boolean;
+  interimResults: boolean;
+  maxAlternatives: number;
+  lang: string;
+  onstart: (() => void) | null;
+  onend: (() => void) | null;
+  onresult: ((event: { results: { [index: number]: { [index: number]: { transcript: string } } } }) => void) | null;
+  onerror: ((event: { error: string }) => void) | null;
+  start(): void;
+  stop(): void;
+  abort(): void;
+}
+
 export function useWebSpeech(options: UseWebSpeechOptions = {}) {
   const { lang = 'vi-VN', rate = 0.8, pitch = 1.15 } = options;
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [error, setError] = useState<string | null>(null);
 
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const isSpeechSupported = typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
 
@@ -20,7 +34,9 @@ export function useWebSpeech(options: UseWebSpeechOptions = {}) {
   useEffect(() => {
     if (typeof window === 'undefined' || !isSpeechSupported) return;
 
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const speechWindow = window as Window & { SpeechRecognition?: new () => SpeechRecognitionInstance; webkitSpeechRecognition?: new () => SpeechRecognitionInstance };
+    const SpeechRecognition = speechWindow.SpeechRecognition || speechWindow.webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
     const recognition = new SpeechRecognition();
 
     recognition.continuous = false;
@@ -33,12 +49,12 @@ export function useWebSpeech(options: UseWebSpeechOptions = {}) {
       setError(null);
     };
 
-    recognition.onresult = (event: any) => {
+    recognition.onresult = (event) => {
       const resultText = event.results[0][0].transcript;
       setTranscript(resultText);
     };
 
-    recognition.onerror = (event: any) => {
+    recognition.onerror = (event) => {
       console.error('Speech recognition error:', event.error);
       setError(event.error);
       setIsListening(false);

@@ -93,7 +93,7 @@ export const ListeningActivity: React.FC<ActivityAdapterProps> = ({ activity, on
   }, []);
 
   const playNote = (frequency: number) => {
-    const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const audioCtx = new (window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)();
     const oscillator = audioCtx.createOscillator();
     const gainNode = audioCtx.createGain();
 
@@ -122,7 +122,7 @@ export const ListeningActivity: React.FC<ActivityAdapterProps> = ({ activity, on
       return;
     }
 
-    const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const audioCtx = new (window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)();
     audioCtxRef.current = audioCtx;
     setIsPlayingSong(true);
 
@@ -198,7 +198,7 @@ export const ListeningActivity: React.FC<ActivityAdapterProps> = ({ activity, on
     activeOscillatorsRef.current.forEach(osc => {
       try {
         osc.stop();
-      } catch (e) {
+      } catch  {
         // Bỏ qua nếu oscillator chưa start hoặc đã stop rồi
       }
     });
@@ -207,7 +207,7 @@ export const ListeningActivity: React.FC<ActivityAdapterProps> = ({ activity, on
     if (audioCtxRef.current) {
       try {
         audioCtxRef.current.close();
-      } catch (e) {
+      } catch  {
         // Bỏ qua lỗi close
       }
       audioCtxRef.current = null;

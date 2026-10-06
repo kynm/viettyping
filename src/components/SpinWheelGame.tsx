@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, Play, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { GameAdapterProps, TelemetryPayload, Flashcard, SpinWheelItem } from "@/types/lesson";
+import { GameAdapterProps, SpinWheelItem } from "@/types/lesson";
 import { useStudent } from "@/contexts/StudentContext";
 import { useSound } from "@/contexts/SoundContext";
 

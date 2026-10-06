@@ -1,8 +1,9 @@
+import { TrueFalseItem } from '@/types/lesson';
 /* eslint-disable */
 import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import TrueFalseGame, { TrueFalseGameConfig } from '../TrueFalseGame';
+import TrueFalseGame from '../TrueFalseGame';
 
 // Mock framer-motion
 jest.mock('framer-motion', () => {
@@ -48,11 +49,12 @@ jest.mock('@/contexts/SoundContext', () => ({
 
 
 describe('TrueFalseGame', () => {
-  const mockConfig: TrueFalseGameConfig = {
+  const mockConfig: TrueFalseItem = {
     id: 'tf-test-game',
+    type: 'true_false_game',
     items: [
-      { correct_word: 'Cá', distractor_word: 'Chó', image_url: '/assets/fish.png' },
-      { correct_word: 'Táo', distractor_word: 'Lê', image_url: '/assets/apple.png' }
+      { correct_word: 'Cá', distractor_word: 'Chó', image_prompt: '/assets/fish.png' },
+      { correct_word: 'Táo', distractor_word: 'Lê', image_prompt: '/assets/apple.png' }
     ]
   };
 

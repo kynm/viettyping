@@ -8,7 +8,7 @@ import { useSound } from "@/contexts/SoundContext";
 
 const VIETNAMESE_CHARS = "aăâeêioôơuưyáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵbcdđghklmnpqrstvx".split("");
 
-export default function FillInTheBlankGame({ gameConfig, flashcards = [], onComplete }: GameAdapterProps<FillInTheBlankItem>) {
+export default function FillInTheBlankGame({ gameConfig, onComplete }: GameAdapterProps<FillInTheBlankItem>) {
   const { id: gameId, items } = gameConfig;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedChar, setSelectedChar] = useState<string | null>(null);

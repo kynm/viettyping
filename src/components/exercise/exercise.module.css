@@ -1,0 +1,21 @@
+.complete {
+  animation: reward-enter 240ms ease-out both;
+}
+
+.flipped {
+  animation: card-reveal 180ms ease-out both;
+}
+
+@keyframes reward-enter {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes card-reveal {
+  from { opacity: .6; transform: rotateY(-12deg); }
+  to { opacity: 1; transform: rotateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .complete, .flipped { animation: none; }
+}

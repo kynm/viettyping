@@ -3,23 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { 
-  Sparkles, 
-  BookOpen, 
-  Trophy, 
-  Lightbulb, 
-  ArrowRight, 
-  Smile, 
-  CheckCircle2, 
-  TrendingUp, 
-  ClipboardList, 
-  Music, 
-  Palette, 
-  Activity as HeartIcon, 
-  Target,
-  PenTool,
-  BrainCircuit
-} from 'lucide-react';
+import { Sparkles, Trophy, Lightbulb, ArrowRight, CheckCircle2, TrendingUp, ClipboardList, Target, BrainCircuit } from 'lucide-react';
 import { useSound } from '@/contexts/SoundContext';
 
 interface StudyTask {

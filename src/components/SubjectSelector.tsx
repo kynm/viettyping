@@ -3,7 +3,7 @@ import { Subject } from '@/data/subjects';
 import { useProgress } from '@/hooks/useProgress';
 import { useSound } from '@/contexts/SoundContext';
 import { motion } from 'framer-motion';
-import { ChevronRight, Star, BookOpen } from 'lucide-react';
+import { Star, BookOpen } from 'lucide-react';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -184,5 +184,3 @@ const SubjectSelector: React.FC<SubjectSelectorProps> = ({
 };
 
 export default SubjectSelector;
-
-

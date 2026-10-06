@@ -6,12 +6,7 @@ import { ActivityAdapterProps } from '@/types/activity';
 import { QuizActivity } from './QuizActivity';
 import { useTypingSound } from '@/hooks/useTypingSound';
 
-export const MathActivity: React.FC<ActivityAdapterProps> = ({ activity, onComplete, onProgressUpdate }) => {
-  // Nếu không phải là toán đặt tính hàng dọc, fallback về QuizActivity
-  if (activity.data?.subtype !== 'vertical') {
-    return <QuizActivity activity={activity} onComplete={onComplete} onProgressUpdate={onProgressUpdate} />;
-  }
-
+const VerticalMathActivity: React.FC<ActivityAdapterProps> = ({ activity, onComplete, onProgressUpdate }) => {
   const { playCorrectSound, playWrongSound } = useTypingSound();
   const startTimeRef = useRef<number>(Date.now());
   const wrongAttemptsRef = useRef<number>(0);
@@ -337,3 +332,5 @@ export const MathActivity: React.FC<ActivityAdapterProps> = ({ activity, onCompl
     </div>
   );
 };
+
+export const MathActivity: React.FC<ActivityAdapterProps> = props => props.activity.data?.subtype === 'vertical' ? <VerticalMathActivity {...props} /> : <QuizActivity {...props} />;

@@ -1,8 +1,9 @@
+import { MultipleChoiceItem } from '@/types/lesson';
 /* eslint-disable */
 import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import MultipleChoiceGame, { MultipleChoiceGameConfig } from '../MultipleChoiceGame';
+import MultipleChoiceGame from '../MultipleChoiceGame';
 
 // Mock framer-motion
 jest.mock('framer-motion', () => {
@@ -42,8 +43,9 @@ global.Audio = jest.fn().mockImplementation(() => ({
 }));
 
 describe('MultipleChoiceGame', () => {
-  const mockConfig: MultipleChoiceGameConfig = {
+  const mockConfig: MultipleChoiceItem = {
     id: 'mc-test-game',
+    type: 'multiple_choice',
     items: [
       { question: 'Con gì kêu meo meo?', correct_answer: 'Mèo', distractors: ['Chó', 'Gà'] },
       { question: 'Quả gì màu đỏ?', correct_answer: 'Táo', distractors: ['Nho', 'Chuối'] }

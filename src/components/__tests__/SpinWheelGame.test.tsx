@@ -1,8 +1,9 @@
+import { SpinWheelItem } from '@/types/lesson';
 /* eslint-disable */
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import SpinWheelGame, { SpinWheelGameConfig } from '../SpinWheelGame';
+import SpinWheelGame from '../SpinWheelGame';
 
 // Mock framer-motion
 jest.mock('framer-motion', () => {
@@ -64,8 +65,9 @@ jest.mock('@/contexts/SoundContext', () => ({
 }));
 
 describe('SpinWheelGame', () => {
-  const mockConfig: SpinWheelGameConfig = {
+  const mockConfig: SpinWheelItem = {
     id: 'spin-test-game',
+    type: 'spin_wheel_items',
     items: ['ba', 'bò', 'ca']
   };
 

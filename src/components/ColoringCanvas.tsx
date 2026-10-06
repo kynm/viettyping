@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoTrashOutline, IoCheckmarkCircle, IoAlertCircle, IoSparkles } from "react-icons/io5";
-import { GameAdapterProps, ColoringCanvasItem, TelemetryPayload } from "@/types/lesson";
+import { GameAdapterProps, ColoringCanvasItem } from "@/types/lesson";
 
 const SHAPES: Record<string, { path: string; stroke: string; width: number; height: number; viewBox: string }> = {
   heart: {
@@ -456,4 +456,3 @@ export default function ColoringCanvas({ gameConfig, onComplete }: GameAdapterPr
     </div>
   );
 }
-

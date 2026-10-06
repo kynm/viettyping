@@ -3,19 +3,16 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus_Jakarta_Sans } from 'next/font/google';
-import { BookOpen, Keyboard, Volume2, VolumeX, Moon, Sun, Sparkles, RefreshCw, Eye, EyeOff, Play, Pause, ArrowRight, Video, Palette, Settings, Lightbulb } from 'lucide-react';
+import { plusJakartaSans } from '@/lib/fonts';
+import { BookOpen, Volume2, Sparkles, RefreshCw, Eye, EyeOff, Play, Pause, ArrowRight, Video, Palette, Settings, Lightbulb } from 'lucide-react';
 import AsmrKeyboard from '@/components/AsmrKeyboard';
-import AsmrVisualizer from '@/components/AsmrVisualizer';
+
 import FingersVisualizer from '@/components/FingersVisualizer';
 import { useSound } from '@/contexts/SoundContext';
 import { stringToTelexKeys, buildCharMappings, CharMapping } from '@/utils/telex';
 import VisualWorldBackground from '@/components/VisualWorldBackground';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700', '800']
-});
+
 
 // Các bài thơ thiếu nhi cấu hình song song Có Dấu và Không Dấu
 const zenTexts = [
@@ -63,7 +60,7 @@ export default function AsmrPage() {
 
   // Trạng thái gõ phím tương tác
   const [activeKeys, setActiveKeys] = useState<Set<string>>(new Set());
-  const [triggerSignal, setTriggerSignal] = useState<number>(0);
+  const [, setTriggerSignal] = useState<number>(0);
   const [highlightKey, setHighlightKey] = useState<string | null>(null);
 
   // Trạng thái bài gõ Zen
@@ -132,8 +129,8 @@ export default function AsmrPage() {
     if (!ctx) return;
 
     // Dọn dẹp ambient cũ
-    if (rainNodeRef.current) { try { rainNodeRef.current.stop(); } catch (e) { } rainNodeRef.current = null; }
-    if (campfireNodeRef.current) { try { campfireNodeRef.current.stop(); } catch (e) { } campfireNodeRef.current = null; }
+    if (rainNodeRef.current) { try { rainNodeRef.current.stop(); } catch  { } rainNodeRef.current = null; }
+    if (campfireNodeRef.current) { try { campfireNodeRef.current.stop(); } catch  { } campfireNodeRef.current = null; }
     if (campfireIntervalRef.current) { clearTimeout(campfireIntervalRef.current); campfireIntervalRef.current = null; }
 
     const bufferSize = ctx.sampleRate * 2;
@@ -207,11 +204,11 @@ export default function AsmrPage() {
 
   const stopAmbient = useCallback(() => {
     if (rainNodeRef.current) {
-      try { rainNodeRef.current.stop(); } catch (e) { }
+      try { rainNodeRef.current.stop(); } catch  { }
       rainNodeRef.current = null;
     }
     if (campfireNodeRef.current) {
-      try { campfireNodeRef.current.stop(); } catch (e) { }
+      try { campfireNodeRef.current.stop(); } catch  { }
       campfireNodeRef.current = null;
     }
     if (campfireIntervalRef.current) {
@@ -439,7 +436,7 @@ export default function AsmrPage() {
 
     let ctx = audioContextRef.current;
     if (!ctx) {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioContextClass = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
       if (AudioContextClass) {
         ctx = new AudioContextClass();
         audioContextRef.current = ctx;

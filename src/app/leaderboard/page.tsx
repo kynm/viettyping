@@ -2,16 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Trophy, Flame, Crown, Sparkles, Medal, Play, Zap, Heart, Lock } from 'lucide-react';
 import { useSound } from '@/contexts/SoundContext';
 import { LeaderboardUser } from '@/lib/leaderboard';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { plusJakartaSans } from '@/lib/fonts';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700', '800']
-});
+
 
 export default function LeaderboardPage() {
   const router = useRouter();

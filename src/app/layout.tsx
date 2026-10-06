@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { plusJakartaSans } from '@/lib/fonts';
 import Script from 'next/script'
 import './globals.css'
 import { SoundProvider } from '@/contexts/SoundContext'
@@ -9,12 +9,7 @@ import { AuthProvider } from '@/contexts/AuthContext'
 import DataSyncProvider from '@/components/DataSyncProvider'
 import AccountStatus from '@/components/AccountStatus'
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  weight: ['400', '500', '600', '700', '800'],
-  subsets: ['latin', 'vietnamese'],
-  variable: '--font-plus-jakarta-sans',
-  display: 'swap',
-})
+
 
 export const metadata: Metadata = {
   title: 'EasyTyping - Luyện Gõ Phím Tiếng Việt',
@@ -56,5 +51,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-

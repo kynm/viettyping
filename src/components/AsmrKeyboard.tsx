@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import { fingerMap } from './keyboardConstants';
 
 interface Props {
@@ -48,7 +48,7 @@ export default function AsmrKeyboard({
   ledMode,
   highlightKey
 }: Props) {
-  const [ripples, setRipples] = useState<{ id: string; x: number; y: number; color: string }[]>([]);
+  const [, setRipples] = useState<{ id: string; x: number; y: number; color: string }[]>([]);
 
   // Lắng nghe sự kiện để tạo hiệu ứng gợn sóng khi activeKeys thay đổi
   useEffect(() => {

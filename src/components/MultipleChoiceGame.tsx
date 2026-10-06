@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X } from "lucide-react";
 import confetti from "canvas-confetti";
-import { GameAdapterProps, TelemetryPayload, Flashcard, MultipleChoiceItem } from "@/types/lesson";
+import { GameAdapterProps, TelemetryPayload, MultipleChoiceItem } from "@/types/lesson";
 import { useSound } from "@/contexts/SoundContext";
 
 // Utility to shuffle an array

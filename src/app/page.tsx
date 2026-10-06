@@ -3,23 +3,19 @@
 import React, { useState, useEffect } from 'react';
 import { subjects } from '@/data/subjects';
 import SubjectSelector from '@/components/SubjectSelector';
-import HeroSlideBanner from '@/components/HeroSlideBanner';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useSound } from '@/contexts/SoundContext';
 import { useStudent } from '@/contexts/StudentContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Trophy, Flame, Keyboard, ArrowRight, Smile, Menu, X, Gift, Award, Home as HomeIcon, CheckSquare, BookOpen, Users, Gamepad2, TrendingUp, User } from 'lucide-react';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Sparkles, Trophy, Keyboard, ArrowRight, Smile, Menu, X, Gift, Home as HomeIcon, CheckSquare, BookOpen, Users, Gamepad2, TrendingUp, User } from 'lucide-react';
+import { plusJakartaSans } from '@/lib/fonts';
 import Logo from '@/components/Logo';
 import DinoMascot from '@/components/DinoMascot';
 import VisualWorldBackground from '@/components/VisualWorldBackground';
 import { TactileStarBadge } from '@/components/BadgeElements';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700', '800']
-});
+
 
 const titles = [
   'Học Tập Kỳ Thú Cho Bé',
@@ -54,13 +50,11 @@ export default function Home() {
   const [titleIndex, setTitleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(100);
-  const [isMounted, setIsMounted] = useState(false);
-  const [activeMenu, setActiveMenu] = useState<'home' | 'lesson' | 'tasks' | 'shop' | 'leaderboard'>('home');
+  const [activeMenu, setActiveMenu] = useState<string>('home');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Đọc dữ liệu gamification từ localStorage
   useEffect(() => {
-    setIsMounted(true);
     try {
       const savedXp = parseInt(localStorage.getItem('typing_xp') || '0', 10);
       const savedStreak = parseInt(localStorage.getItem('typing_streak') || '0', 10);
@@ -154,6 +148,7 @@ export default function Home() {
         {[
           { id: 'home', label: 'Trang chủ', icon: <HomeIcon className="w-5 h-5" />, path: '/' },
           { id: 'lesson', label: 'Bài học của bé', icon: <BookOpen className="w-5 h-5" />, path: '/lesson' },
+          { id: 'exercises', label: 'Bài tập tiếng Anh', icon: <CheckSquare className="w-5 h-5" />, path: '/exercises' },
           { id: 'tasks', label: 'Đảo Gõ Phím', icon: <Keyboard className="w-5 h-5" />, path: '/typing' },
           { id: 'shop', label: 'Cửa hàng', icon: <Gift className="w-5 h-5" />, path: '/shop' },
           { id: 'leaderboard', label: 'Bảng xếp hạng', icon: <Trophy className="w-5 h-5" />, path: '/leaderboard' },
@@ -161,7 +156,7 @@ export default function Home() {
           <button
             key={item.id}
             onClick={() => {
-              setActiveMenu(item.id as any);
+              setActiveMenu(item.id);
               handleNavClick(item.path);
             }}
             className={`w-full flex items-center gap-3 px-5 py-3.5 rounded-xl border-2 font-black transition-all cursor-pointer ${
@@ -247,6 +242,7 @@ export default function Home() {
 
           {/* Navigation Links (Horizontal) */}
           <nav className="hidden lg:flex items-center gap-6 font-black text-sm text-[var(--color-foreground)]">
+            <Link href="/exercises" onClick={() => playSound('click')} className="hover:text-[var(--color-primary)] py-1">Tiếng Anh</Link>
             <Link href="/lesson" onClick={() => playSound('click')} className="hover:text-[var(--color-primary)] border-b-2 border-transparent hover:border-[var(--color-primary)] py-1">Bài học</Link>
             <Link href="/typing/turtle-rescue" onClick={() => playSound('click')} className="hover:text-[var(--color-primary)] border-b-2 border-transparent hover:border-[var(--color-primary)] py-1">Trò chơi</Link>
             <Link href="/typing" onClick={() => playSound('click')} className="hover:text-[var(--color-primary)] border-b-2 border-transparent hover:border-[var(--color-primary)] py-1">Luyện tập</Link>
@@ -310,7 +306,7 @@ export default function Home() {
                 Chào {studentInfo?.nickname || 'Dũng Sĩ Gõ Phím'}!
               </h2>
               <p className="text-[var(--color-foreground)] opacity-90 text-sm md:text-base font-semibold max-w-xl leading-relaxed mb-6">
-                Chúc mừng bạn đã đạt cấp độ {levelConfig.name}. Phương châm của chúng ta là <strong className="text-[var(--color-primary-depth)] font-black">"{levelConfig.motto}"</strong>. {levelConfig.desc}
+                Chúc mừng bạn đã đạt cấp độ {levelConfig.name}. Phương châm của chúng ta là <strong className="text-[var(--color-primary-depth)] font-black">&quot;{levelConfig.motto}&quot;</strong>. {levelConfig.desc}
               </p>
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
                 <button

@@ -7,13 +7,10 @@ import TypingPractice, { TypingTask } from '@/components/TypingPractice';
 import CompletionModal from '@/components/CompletionModal';
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
 import { TelemetryPayload } from '@/types/lesson';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { plusJakartaSans } from '@/lib/fonts';
 import { setStoredValue } from '@/lib/client-storage';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700', '800']
-});
+
 
 interface Props {
   params: Promise<{
@@ -184,4 +181,3 @@ export default function LessonPage({ params }: Props) {
     </main>
   );
 }
-
