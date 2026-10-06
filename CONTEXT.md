@@ -62,6 +62,16 @@ Xây dựng một ứng dụng web giáo dục tương tác cao, tập trung chu
 - **Hướng dẫn gõ Telex động (Keystroke Bubble Hint):** Hiển thị bong bóng gợi ý tổ hợp phím Telex động (ví dụ `[a] + [s]` trên chữ `á`) ngay phía trên chữ đang cần gõ, cập nhật trạng thái phím đang gõ dở trong tổ hợp.
 - **Phân phối âm thanh & hiệu ứng tương tác:** Component tương tác tự phát âm thanh phản hồi nhanh (Ting/Buzz) và chạy hiệu ứng cục bộ (wiggle/bounce) để tăng độ nhạy tương tác. Phần thưởng lớn (Confetti, XP, lên cấp) do Page Adapter cấp trên kiểm soát khi kết thúc toàn bộ bài học.
 
+## Interactive English exercises — 2026-10-06
+
+Nền tảng được mở rộng thêm bài tập tiếng Anh lớp 1–9, dùng Next.js Route Handlers + Prisma/MySQL ngay trong repository. Các luồng multi-subject/typing cũ vẫn hoạt động. Giáo viên dùng `/teacher/exercises` và `/teacher/classrooms`; học sinh dùng `/exercises`.
+
+Question registry có 21 types. Question Bank tái sử dụng questions của exercises, không tạo bản sao riêng. Course/unit/lesson là metadata trong Exercise. Các câu hỏi heterogeneous lưu JSON có validation; StudentAttempt giữ snapshot riêng tư và revision. Chấm điểm, deadline, XP, Daily Practice bonus và badges đều quyết định ở server. Không dùng snapshot StudentData do client gửi lên để tính điểm chính thức.
+
+Vai trò User mặc định STUDENT; TEACHER được cấp từ CLI quản trị. Session/password flow giữ nguyên. Writing/Speaking được giáo viên chấm, audio lưu riêng và phân quyền theo attempt. AI/speech-to-text feedback chưa có service runtime và là optional extension.
+
+Xem `docs/EXERCISE_SYSTEM.md`, `docs/EXERCISE_SYSTEM_AUDIT.md` và `docs/EXERCISE_IMPLEMENTATION_REPORT.md`.
+
 ## Links & Resources
 - Tài liệu cấu trúc bài học: `SYSTEM_PROMPT.md`
 - Kế hoạch tiến độ: `docs/backlog/progress.md`

@@ -181,3 +181,24 @@ Nếu bạn có thắc mắc hoặc đề xuất, vui lòng tạo issue trên Gi
 
 **Chúc các bé học tập vui vẻ và hiệu quả! 🎉**
 
+## Bài tập tiếng Anh lớp 1–9
+
+Module mới có 21 dạng bài, giao bài cho học sinh/lớp/nhóm, chấm tự động và chấm tay Writing/Speaking, autosave/offline recovery, import CSV/XLSX, Question Bank, Daily Practice, XP/sao/huy hiệu và thống kê. Các bài học đa môn và luyện gõ cũ được giữ lại.
+
+- Học sinh: `/exercises`.
+- Giáo viên: `/teacher/exercises`, quản lý lớp tại `/teacher/classrooms`.
+- [Hướng dẫn hệ thống, API, demo và vận hành](docs/EXERCISE_SYSTEM.md).
+- [Audit trước triển khai](docs/EXERCISE_SYSTEM_AUDIT.md).
+- [Báo cáo triển khai và kiểm tra](docs/EXERCISE_IMPLEMENTATION_REPORT.md).
+
+```powershell
+npm run db:generate
+npm run db:deploy
+npm run typecheck
+npm run lint
+npm test -- --runInBand
+npm run build
+```
+
+Để seed demo, đặt `EXERCISE_DEMO_PASSWORD` riêng rồi chạy `npm run seed:exercises`. Tài khoản `exercise_teacher` và `exercise_student` đã được tạo trong workspace hiện tại; password ngẫu nhiên được giữ ở `.exercise-demo-credentials.txt` (Git ignore). Font Plus Jakarta Sans được self-host cùng giấy phép OFL trong `public/fonts` để build không cần tải Google Fonts.
+
