@@ -56,4 +56,9 @@ export function replaceStoredSnapshot(snapshot: StoredSnapshot) {
 
 export function clearStoredSnapshot() {
   MANAGED_DATA_KEYS.forEach((key) => localStorage.removeItem(key));
+  for (let i = localStorage.length - 1; i >= 0; i--) {
+    const key = localStorage.key(i);
+    if (key?.startsWith('exercise-attempt-')) localStorage.removeItem(key);
+  }
+  if (typeof indexedDB !== 'undefined') indexedDB.deleteDatabase('easytyping-exercise-recordings');
 }

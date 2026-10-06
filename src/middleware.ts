@@ -1,11 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const hasSession = request.cookies.has('viettyping_session');
-
-  if (hasSession && pathname === '/login') {
-    return NextResponse.redirect(new URL('/', request.url));
-  }
+import { NextResponse } from 'next/server';
+export function middleware() {
+  // Cookie presence alone cannot establish a valid session. Keep login accessible
+  // when a cookie is expired; server handlers/layouts enforce actual authorization.
   return NextResponse.next();
 }
 

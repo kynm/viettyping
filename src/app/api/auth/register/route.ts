@@ -3,8 +3,10 @@ import { NextResponse } from 'next/server';
 import { createSession } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { normalizeUsername, validateCredentials } from '@/lib/validation';
+import { isSameOrigin } from '@/lib/request-origin';
 
 export async function POST(request: Request) {
+  if (!isSameOrigin(request)) return NextResponse.json({ error: 'Nguồn yêu cầu không hợp lệ.' }, { status: 403 });
   const body = await request.json().catch(() => ({}));
   const username = normalizeUsername(body.username);
   const error = validateCredentials(username, body.password);
@@ -26,7 +28,7 @@ export async function POST(request: Request) {
     if (caught && typeof caught === 'object' && 'code' in caught && caught.code === 'P2002') {
       return NextResponse.json({ error: 'Tên đăng nhập này đã được sử dụng.' }, { status: 409 });
     }
-    console.error('Register failed:', caught);
+    console.error('Register failed:', caught instanceof Error ? caught.name : 'UnknownError');
     return NextResponse.json({ error: 'Không thể tạo tài khoản.' }, { status: 500 });
   }
 }
