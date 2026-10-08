@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "easytyping",
-      cwd: "C:/laragon/www/easytyping",
+      cwd: __dirname,
       script: "node_modules/next/dist/bin/next",
       args: "start -p 3000",
       env: {

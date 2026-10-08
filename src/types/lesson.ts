@@ -11,7 +11,7 @@ export interface MatchingGameItem {
 export interface TrueFalseItem {
   id: string;
   type: 'true_false_game';
-  items: { correct_word: string; distractor_word: string; image_prompt: string }[];
+  items: { correct_word: string; distractor_word: string; image_prompt: string; image_url?: string }[];
 }
 
 export interface SpinWheelItem {
@@ -132,5 +132,3 @@ export interface LessonSummary {
   totalDuration: number;
   activityResults: ActivityResult[];
 }
-
-

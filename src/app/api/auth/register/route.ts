@@ -36,7 +36,7 @@ export async function POST(request: Request) {
     if (caught && typeof caught === 'object' && 'code' in caught && caught.code === 'P2002') {
       return NextResponse.json({ error: 'Tên đăng nhập này đã được sử dụng.' }, { status: 409 });
     }
-    console.error('Register failed:', caught);
+    console.error('Register failed:', caught instanceof Error ? caught.name : 'UnknownError');
     return NextResponse.json({ error: 'Không thể tạo tài khoản.' }, { status: 500 });
   }
 }

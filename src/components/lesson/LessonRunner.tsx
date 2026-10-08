@@ -70,7 +70,7 @@ export default function LessonRunner({
           <MatchingGame
             gameConfig={currentGame}
             flashcards={flashcards}
-            onComplete={(telemetry) => handleCurrentGameComplete()}
+            onComplete={() => handleCurrentGameComplete()}
           />
         );
       case "true_false_game":
@@ -89,7 +89,7 @@ export default function LessonRunner({
           <SpinWheelGame
             gameConfig={currentGame}
             flashcards={flashcards}
-            onComplete={(telemetry) => handleCurrentGameComplete()}
+            onComplete={() => handleCurrentGameComplete()}
           />
         );
       case "fill_in_the_blank":
@@ -97,7 +97,7 @@ export default function LessonRunner({
           <FillInTheBlankGame
             gameConfig={currentGame}
             flashcards={flashcards}
-            onComplete={(telemetry) => handleCurrentGameComplete()}
+            onComplete={() => handleCurrentGameComplete()}
           />
         );
       case "multiple_choice":
@@ -105,7 +105,7 @@ export default function LessonRunner({
           <MultipleChoiceGame
             gameConfig={currentGame}
             flashcards={flashcards}
-            onComplete={(telemetry) => handleCurrentGameComplete()}
+            onComplete={() => handleCurrentGameComplete()}
           />
         );
       default:

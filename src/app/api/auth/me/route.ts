@@ -5,6 +5,6 @@ export async function GET() {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: 'Chưa đăng nhập.' }, { status: 401 });
   return NextResponse.json({
-    user: { id: user.id, username: user.username, profile: user.profile },
+    user: { id: user.id, username: user.username, role: user.role, profile: user.profile },
   });
 }

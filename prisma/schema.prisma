@@ -16,8 +16,164 @@ model User {
   profile      StudentProfile?
   studentData  StudentData?
   sessions     Session[]
+  role         String          @default("STUDENT") @db.VarChar(20)
+  exercises    Exercise[]
+  assignments  ExerciseAssignment[]
+  attempts     StudentAttempt[]
+  rewards      ExerciseReward[]
+  mediaFiles   ExerciseMedia[]
+  classrooms   Classroom[]
+  memberships  ClassroomMember[]
+  exerciseBadges StudentExerciseBadge[]
+  dailyBonuses StudentDailyBonus[]
 
   @@map("users")
+}
+
+model Exercise {
+  id          Int      @id @default(autoincrement()) @db.UnsignedInt
+  createdBy   Int      @map("created_by") @db.UnsignedInt
+  title       String   @db.VarChar(200)
+  description String   @db.Text
+  grade       Int
+  skill       String   @db.VarChar(30)
+  difficulty  String   @db.VarChar(20)
+  course      String   @default("English") @db.VarChar(120)
+  unit        String   @db.VarChar(120)
+  lesson      String   @db.VarChar(120)
+  timeLimit   Int      @default(0) @map("time_limit")
+  status      String   @default("draft") @db.VarChar(20)
+  questions   Json
+  version     Int      @default(1)
+  leaderboardEnabled Boolean @default(false) @map("leaderboard_enabled")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  owner       User     @relation(fields: [createdBy], references: [id])
+  assignments ExerciseAssignment[]
+  attempts    StudentAttempt[]
+  rewards     ExerciseReward[]
+  @@index([status, grade, skill])
+  @@index([createdBy])
+  @@map("exercises")
+}
+
+model Classroom {
+  id        Int      @id @default(autoincrement()) @db.UnsignedInt
+  teacherId Int      @map("teacher_id") @db.UnsignedInt
+  name      String   @db.VarChar(120)
+  teacher   User     @relation(fields: [teacherId], references: [id])
+  members   ClassroomMember[]
+  @@index([teacherId])
+  @@map("classrooms")
+}
+
+model ClassroomMember {
+  classroomId Int @map("classroom_id") @db.UnsignedInt
+  studentId Int @map("student_id") @db.UnsignedInt
+  groupName String @default("") @map("group_name") @db.VarChar(80)
+  classroom Classroom @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  student User @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  @@id([classroomId, studentId])
+  @@index([studentId])
+  @@map("classroom_members")
+}
+
+model ExerciseAssignment {
+  id              Int      @id @default(autoincrement()) @db.UnsignedInt
+  exerciseId      Int      @map("exercise_id") @db.UnsignedInt
+  studentId       Int      @map("student_id") @db.UnsignedInt
+  startsAt        DateTime @map("starts_at")
+  endsAt          DateTime @map("ends_at")
+  attemptsAllowed Int      @default(1) @map("attempts_allowed")
+  timeLimit       Int      @default(0) @map("time_limit")
+  randomQuestions Boolean  @default(false) @map("random_questions")
+  randomAnswers   Boolean  @default(false) @map("random_answers")
+  showResult      Boolean  @default(true) @map("show_result")
+  showAnswer      Boolean  @default(false) @map("show_answer")
+  exercise        Exercise @relation(fields: [exerciseId], references: [id])
+  student         User     @relation(fields: [studentId], references: [id])
+  attempts        StudentAttempt[]
+  @@unique([exerciseId, studentId])
+  @@index([studentId, endsAt])
+  @@map("exercise_assignments")
+}
+
+model StudentAttempt {
+  id           Int      @id @default(autoincrement()) @db.UnsignedInt
+  exerciseId   Int      @map("exercise_id") @db.UnsignedInt
+  studentId    Int      @map("student_id") @db.UnsignedInt
+  assignmentId Int?     @map("assignment_id") @db.UnsignedInt
+  snapshot     Json
+  answers      Json
+  currentIndex Int      @default(0) @map("current_index")
+  revision     Int      @default(0)
+  score        Float?
+  totalScore   Float    @map("total_score")
+  correct      Int      @default(0)
+  startedAt    DateTime @default(now()) @map("started_at")
+  deadline     DateTime?
+  submittedAt  DateTime? @map("submitted_at")
+  showResult   Boolean  @default(true) @map("show_result")
+  showAnswer   Boolean  @default(false) @map("show_answer")
+  manualGrades Json     @default("{}") @map("manual_grades")
+  needsReview  Boolean  @default(false) @map("needs_review")
+  mode         String   @default("exercise") @db.VarChar(20)
+  label        String   @default("") @db.VarChar(200)
+  activeSince  DateTime @default(now()) @map("active_since")
+  questionDurations Json @default("{}") @map("question_durations")
+  mediaFiles   ExerciseMedia[]
+  exercise     Exercise @relation(fields: [exerciseId], references: [id])
+  student      User     @relation(fields: [studentId], references: [id])
+  assignment   ExerciseAssignment? @relation(fields: [assignmentId], references: [id])
+  @@index([studentId, exerciseId, submittedAt])
+  @@index([assignmentId])
+  @@map("student_attempts")
+}
+
+model StudentExerciseBadge {
+  studentId Int @map("student_id") @db.UnsignedInt
+  badge String @db.VarChar(50)
+  awardedAt DateTime @default(now()) @map("awarded_at")
+  student User @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  @@id([studentId, badge])
+  @@map("student_exercise_badges")
+}
+
+model StudentDailyBonus {
+  studentId Int @map("student_id") @db.UnsignedInt
+  day String @db.VarChar(10)
+  xp Int @default(10)
+  student User @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  @@id([studentId, day])
+  @@map("student_daily_bonuses")
+}
+
+model ExerciseMedia {
+  id        String   @id @db.VarChar(80)
+  userId    Int      @map("user_id") @db.UnsignedInt
+  attemptId Int?     @map("attempt_id") @db.UnsignedInt
+  mime      String   @db.VarChar(80)
+  size      Int
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  attempt   StudentAttempt? @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  @@index([userId])
+  @@index([attemptId])
+  @@map("exercise_media")
+}
+
+model ExerciseReward {
+  id         Int      @id @default(autoincrement()) @db.UnsignedInt
+  studentId  Int      @map("student_id") @db.UnsignedInt
+  exerciseId Int      @map("exercise_id") @db.UnsignedInt
+  xp         Int
+  stars      Int
+  badge      String   @db.VarChar(50)
+  createdAt  DateTime @default(now()) @map("created_at")
+  student    User     @relation(fields: [studentId], references: [id])
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  @@unique([studentId, exerciseId])
+  @@map("exercise_rewards")
 }
 
 model StudentProfile {

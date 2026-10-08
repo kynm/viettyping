@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useStudent, StudentInfo } from "@/contexts/StudentContext";
 import { useSound } from "@/contexts/SoundContext";
 import { X, Sparkles, User, GraduationCap } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import confettiActual from "canvas-confetti";
+import { useAuth } from '@/contexts/AuthContext';
 
 const THEME_TO_EMOJI: Record<string, string> = {
   dino: "🦖",
@@ -16,7 +17,7 @@ const THEME_TO_EMOJI: Record<string, string> = {
   leopard: "🐆"
 };
 
-const GRADES = ["Lớp 1", "Lớp 2", "Lớp 3", "Lớp 4", "Lớp 5"];
+const GRADES = Array.from({ length: 9 }, (_, i) => `Lớp ${i + 1}`);
 
 const MASCOTS = [
   { id: "dino", name: "Khủng Long", emoji: "🦖", desc: "Khủng long xanh lá" },
@@ -27,6 +28,8 @@ const MASCOTS = [
 ];
 
 export default function StudentConfigModal() {
+  const { user } = useAuth();
+  const pathname = usePathname();
   const router = useRouter();
   const { studentInfo, isConfigured, isOpenConfig, setIsOpenConfig, updateStudentInfo, isLoaded } = useStudent();
   const { playSound } = useSound();
@@ -73,10 +76,11 @@ export default function StudentConfigModal() {
 
   // Tự động mở modal nếu bé chưa cấu hình và dữ liệu đã được load từ localStorage
   useEffect(() => {
+    if (user?.role === 'TEACHER' || pathname === '/login') { setIsOpenConfig(false); return; }
     if (isLoaded && !isConfigured) {
       setIsOpenConfig(true);
     }
-  }, [isLoaded, isConfigured, setIsOpenConfig]);
+  }, [isLoaded, isConfigured, setIsOpenConfig, user?.role, pathname]);
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
@@ -198,7 +202,7 @@ export default function StudentConfigModal() {
                             }
                           } else {
                             playSound("click");
-                            setTheme(m.id as any);
+                            setTheme(m.id as typeof theme);
                           }
                         }}
                         className={`flex flex-col items-center justify-center p-2 rounded-xl transition-all relative border-2 ${

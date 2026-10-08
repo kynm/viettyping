@@ -14,10 +14,11 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoCheckmarkCircle, IoAlertCircle, IoHelpCircle } from "react-icons/io5";
-import { GameAdapterProps, TelemetryPayload, RealWorldMathGameItem } from "@/types/lesson";
+import { GameAdapterProps, RealWorldMathGameItem } from "@/types/lesson";
 
 // Draggable Item Component
 function DraggableItem({ id, itemType }: { id: string; itemType: string }) {
+  const getEmoji = () => itemType === 'apple' ? '🍎' : itemType === 'candy' ? '🍬' : '🪙';
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id });
 
   const style = transform
@@ -28,11 +29,7 @@ function DraggableItem({ id, itemType }: { id: string; itemType: string }) {
       }
     : { touchAction: "none" };
 
-  const getEmoji = () => {
-    if (itemType === "apple") return "🍎";
-    if (itemType === "candy") return "🍬";
-    return "🪙";
-  };
+
 
   return (
     <div ref={setNodeRef} style={style} {...listeners} {...attributes} className="p-1 select-none">
@@ -94,11 +91,7 @@ function TargetContainer({
     return "👛 Ví Tiền";
   };
 
-  const getEmoji = () => {
-    if (itemType === "apple") return "🍎";
-    if (itemType === "candy") return "🍬";
-    return "🪙";
-  };
+
 
   return (
     <div className="flex flex-col items-center gap-2">
@@ -176,7 +169,7 @@ export default function RealWorldMathGame({ gameConfig, onComplete }: GameAdapte
   const resetQuestion = (index: number) => {
     const q = items[index];
     if (!q) return;
-    
+
     // Cung cấp sẵn 10 vật phẩm ở nguồn
     const newSource = Array.from({ length: 12 }, (_, i) => `${q.itemType}_${i}`);
     setSourceItems(newSource);
@@ -196,7 +189,7 @@ export default function RealWorldMathGame({ gameConfig, onComplete }: GameAdapte
     if (overId === "target-pool" && sourceItems.includes(activeId)) {
       setSourceItems((prev) => prev.filter((i) => i !== activeId));
       setTargetItems((prev) => [...prev, activeId]);
-      
+
       // Play a light audio cue
       playAudioCue("/ting.mp3", 0.3);
     }
@@ -204,7 +197,7 @@ export default function RealWorldMathGame({ gameConfig, onComplete }: GameAdapte
     else if (overId === "source-pool" && targetItems.includes(activeId)) {
       setTargetItems((prev) => prev.filter((i) => i !== activeId));
       setSourceItems((prev) => [...prev, activeId]);
-      
+
       playAudioCue("/ting.mp3", 0.2);
     }
   };
@@ -226,7 +219,7 @@ export default function RealWorldMathGame({ gameConfig, onComplete }: GameAdapte
     if (targetCount === expected) {
       // Đúng phép tính!
       playAudioCue("/ting.mp3", 0.6);
-      
+
       if (currentQuestionIndex < items.length - 1) {
         // Chuyển câu hỏi kế tiếp
         const nextIdx = currentQuestionIndex + 1;
@@ -276,7 +269,7 @@ export default function RealWorldMathGame({ gameConfig, onComplete }: GameAdapte
 
   return (
     <div className="w-full flex flex-col items-center gap-6">
-      
+
       {/* Question / Instruction Section */}
       <div className="w-full max-w-xl bg-white/90 border-4 border-slate-800 rounded-3xl p-5 shadow-[6px_6px_0px_0px_#1e293b]">
         <h4 className="text-xl md:text-2xl font-black text-purple-700 mb-2 leading-snug">

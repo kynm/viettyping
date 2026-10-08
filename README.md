@@ -38,14 +38,14 @@ Toàn bộ hệ thống bài học và mini-game được tối ưu hóa cho tha
 
 ## 🛠️ Công nghệ sử dụng
 
-- **Next.js 15** - Framework React cho web
+- **Next.js 16** - Framework React cho web
 - **TypeScript** - Ngôn ngữ lập trình có type-safe
 - **Tailwind CSS** - Framework CSS utility-first
 - **React Icons** - Thư viện icon cho React
 
 ## 📋 Yêu cầu hệ thống
 
-- Node.js 18+
+- Node.js 20.9+ (khuyến nghị bản LTS)
 - npm hoặc yarn
 - Trình duyệt web hiện đại
 
@@ -82,6 +82,18 @@ npm run db:deploy
 # Khởi động ứng dụng
 npm run dev
 ```
+
+### Deploy bản cập nhật trên Windows/Laragon với PM2
+
+Hướng dẫn chi tiết: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
+```powershell
+npm run deploy
+```
+
+Lệnh này dừng PM2 trước khi cập nhật dependency để tránh khóa DLL Prisma trên Windows,
+chạy kiểm tra và build, áp dụng migration rồi khởi động lại ứng dụng. Khi có lỗi,
+quy trình dừng ngay và giữ log của bước thất bại.
 
 Mỗi tài khoản có dữ liệu học tập riêng. Khi đăng nhập lần đầu, dữ liệu cũ trong trình duyệt sẽ được chuyển lên MySQL nếu tài khoản chưa có dữ liệu; khi đăng xuất, dữ liệu local của học sinh được xóa khỏi trình duyệt.
 
@@ -180,4 +192,25 @@ Nếu bạn có thắc mắc hoặc đề xuất, vui lòng tạo issue trên Gi
 ---
 
 **Chúc các bé học tập vui vẻ và hiệu quả! 🎉**
+
+## Bài tập tiếng Anh lớp 1–9
+
+Module mới có 21 dạng bài, giao bài cho học sinh/lớp/nhóm, chấm tự động và chấm tay Writing/Speaking, autosave/offline recovery, import CSV/XLSX, Question Bank, Daily Practice, XP/sao/huy hiệu và thống kê. Các bài học đa môn và luyện gõ cũ được giữ lại.
+
+- Học sinh: `/exercises`.
+- Giáo viên: `/teacher/exercises`, quản lý lớp tại `/teacher/classrooms`.
+- [Hướng dẫn hệ thống, API, demo và vận hành](docs/EXERCISE_SYSTEM.md).
+- [Audit trước triển khai](docs/EXERCISE_SYSTEM_AUDIT.md).
+- [Báo cáo triển khai và kiểm tra](docs/EXERCISE_IMPLEMENTATION_REPORT.md).
+
+```powershell
+npm run db:generate
+npm run db:deploy
+npm run typecheck
+npm run lint
+npm test -- --runInBand
+npm run build
+```
+
+Để seed demo, đặt `EXERCISE_DEMO_PASSWORD` riêng rồi chạy `npm run seed:exercises`. Tài khoản `exercise_teacher` và `exercise_student` đã được tạo trong workspace hiện tại; password ngẫu nhiên được giữ ở `.exercise-demo-credentials.txt` (Git ignore). Font Plus Jakarta Sans được self-host cùng giấy phép OFL trong `public/fonts` để build không cần tải Google Fonts.
 

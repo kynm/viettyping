@@ -201,7 +201,7 @@ const ActivityView: React.FC<ActivityViewProps> = ({ topic, onComplete }) => {
             return (
               <div className="text-center">
                 <p className="text-gray-500">
-                  Trò chơi loại "{subtype}" đang được phát triển...
+                  Trò chơi loại &quot;{subtype}&quot; đang được phát triển...
                 </p>
               </div>
             );

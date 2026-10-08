@@ -186,7 +186,6 @@ export default function TypingPractice({ task, onComplete, onStatsChange, hideSt
     }
 
     const newValidation = validateInput(task.content, newInput);
-    const newFirstErrorIndex = newValidation.firstErrorTelexIndex;
 
     const isNewCorrect = newValidation.isValid;
     const isOldCorrect = oldFirstErrorIndex === -1;

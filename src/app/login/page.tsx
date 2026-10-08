@@ -31,7 +31,7 @@ export default function LoginPage() {
         return;
       }
       await refreshUser();
-      router.replace('/');
+      router.replace(payload.user?.role === 'TEACHER' ? '/teacher/exercises' : '/');
       router.refresh();
     } catch {
       setError('Không kết nối được máy chủ.');

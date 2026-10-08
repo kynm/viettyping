@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Volume2, Mic, Eye, EyeOff, Check } from "lucide-react";
 import { useSound } from "@/contexts/SoundContext";
@@ -42,7 +42,6 @@ export default function Flashcard({
     isSpeechSupported,
     isListening,
     transcript,
-    error: speechError,
     speak,
     stopSpeaking,
     startListening,
@@ -305,7 +304,7 @@ export default function Flashcard({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      isListening ? stopListening() : startListening();
+                      if (isListening) stopListening(); else startListening();
                       playAppSound('click');
                     }}
                     className={`w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md transition-transform hover:scale-105 active:scale-95 cursor-pointer
@@ -339,7 +338,7 @@ export default function Flashcard({
                   )}
                   {transcript && (
                     <div className="text-[9px] text-white/95 truncate max-w-[180px] mx-auto mt-0.5">
-                      Bé nói: <span className="font-bold">"{transcript}"</span>
+                      Bé nói: <span className="font-bold">&quot;{transcript}&quot;</span>
                     </div>
                   )}
                   {speakSuccess === true && (

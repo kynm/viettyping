@@ -7,6 +7,7 @@ import { clearStoredSnapshot, readStoredSnapshot } from '@/lib/client-storage';
 export interface AuthUser {
   id: number;
   username: string;
+  role?: string;
 }
 
 interface AuthContextValue {

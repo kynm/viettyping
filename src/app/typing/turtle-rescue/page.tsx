@@ -3,16 +3,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Play, Sparkles, Volume2, VolumeX, Shield, Heart, Keyboard, Flag, Star } from 'lucide-react';
+import { ArrowLeft, Play, Sparkles, Keyboard, Flag, Star } from 'lucide-react';
 import { useSound } from '@/contexts/SoundContext';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { plusJakartaSans } from '@/lib/fonts';
 import confetti from 'canvas-confetti';
 import { setStoredValue } from '@/lib/client-storage';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700', '800']
-});
+
 
 interface WordItem {
   word: string;
@@ -558,7 +555,7 @@ export default function TurtleRescuePage() {
               </div>
 
               <div className="bg-sky-50 border border-sky-200 rounded-xl p-3 text-xs text-sky-700 font-black max-w-sm mx-auto">
-                🏅 Đã nhận Huy hiệu "Hiệp Sĩ Rùa" trong tủ huy hiệu của bé!
+                🏅 Đã nhận Huy hiệu &quot;Hiệp Sĩ Rùa&quot; trong tủ huy hiệu của bé!
               </div>
 
               {/* Nút hành động */}

@@ -1,8 +1,9 @@
+import { FillInTheBlankItem } from '@/types/lesson';
 /* eslint-disable */
 import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import FillInTheBlankGame, { FillInTheBlankGameConfig } from '../FillInTheBlankGame';
+import FillInTheBlankGame from '../FillInTheBlankGame';
 
 // Mock framer-motion
 jest.mock('framer-motion', () => {
@@ -42,7 +43,7 @@ global.Audio = jest.fn().mockImplementation(() => ({
 }));
 
 describe('FillInTheBlankGame', () => {
-  const mockConfig: FillInTheBlankGameConfig = {
+  const mockConfig: FillInTheBlankItem = {
     id: 'blank-test-game',
     type: 'fill_in_the_blank',
     items: [

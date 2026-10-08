@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ActivityAdapterProps } from '@/types/activity';
 import ColoringCanvas from '@/components/ColoringCanvas';
-import { ColoringCanvasItem } from '@/types/lesson';
+import { ColoringCanvasItem, TelemetryPayload } from '@/types/lesson';
 
 export const DrawingActivity: React.FC<ActivityAdapterProps> = ({ activity, onComplete, onProgressUpdate }) => {
   const [startTime, setStartTime] = useState<number>(0);
@@ -10,7 +10,7 @@ export const DrawingActivity: React.FC<ActivityAdapterProps> = ({ activity, onCo
     setStartTime(Date.now());
   }, []);
 
-  const handleCanvasComplete = (telemetry: any) => {
+  const handleCanvasComplete = (telemetry: TelemetryPayload) => {
     const duration = Math.round((Date.now() - startTime) / 1000);
     
     if (onProgressUpdate) {

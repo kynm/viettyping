@@ -1,8 +1,9 @@
+import { MatchingGameItem } from '@/types/lesson';
 /* eslint-disable */
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import MatchingGame, { MatchingGameConfig } from '../MatchingGame';
+import MatchingGame from '../MatchingGame';
 
 // We store the onDragEnd handler here so our tests can invoke it manually
 let lastOnDragEnd: any = null;
@@ -79,11 +80,12 @@ jest.mock('@/contexts/SoundContext', () => ({
 }));
 
 describe('MatchingGame', () => {
-  const mockConfig: MatchingGameConfig = {
+  const mockConfig: MatchingGameItem = {
     id: 'matching-test-game',
+    type: 'matching_game',
     items: [
-      { word: 'ba', image_url: '/assets/ba.png' },
-      { word: 'bò', image_url: '/assets/bo.png' }
+      { word: 'ba', image_prompt: '', image_url: '/assets/ba.png' },
+      { word: 'bò', image_prompt: '', image_url: '/assets/bo.png' }
     ]
   };
 

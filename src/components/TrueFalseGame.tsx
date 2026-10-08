@@ -48,7 +48,8 @@ export default function TrueFalseGame({ gameConfig, flashcards = [], onComplete 
     const flashcard = flashcards.find(
       (f) => f.word.toLowerCase() === currentItem.correct_word.toLowerCase()
     );
-    return flashcard?.image_url || (currentItem as any).image_url || (currentItem as any).image_prompt || "/assets/placeholder.png";
+    const imagePrompt = 'image_prompt' in currentItem ? currentItem.image_prompt : '';
+    return flashcard?.image_url || currentItem.image_url || imagePrompt || "/assets/placeholder.png";
   }, [currentItem, flashcards]);
 
   useEffect(() => {
@@ -253,4 +254,3 @@ export default function TrueFalseGame({ gameConfig, flashcards = [], onComplete 
     </div>
   );
 }
-

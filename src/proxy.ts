@@ -1,13 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-export function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const hasSession = request.cookies.has('viettyping_session');
-
-  if (hasSession && pathname === '/login') {
-    return NextResponse.redirect(new URL('/', request.url));
-  }
-
+export function proxy() {
+  // Server handlers/layouts validate sessions. An expired cookie must not block login.
   return NextResponse.next();
 }
 

@@ -2,18 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Sparkles, Flame, Check, Lock, ShoppingBag, Star, Lightbulb } from 'lucide-react';
 import { useSound } from '@/contexts/SoundContext';
 import { useStudent } from '@/contexts/StudentContext';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { plusJakartaSans } from '@/lib/fonts';
 import confetti from 'canvas-confetti';
 import { setStoredValue } from '@/lib/client-storage';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700', '800']
-});
+
 
 interface MascotItem {
   id: 'dino' | 'turtle' | 'bunny' | 'panda' | 'leopard';

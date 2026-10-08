@@ -1,16 +1,13 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
+import reactHooks from 'eslint-plugin-react-hooks';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// React Compiler is not enabled in this project. Surface its new migration
+// diagnostics as warnings while keeping Rules of Hooks and TypeScript errors blocking.
+const compilerDiagnostics = Object.fromEntries(
+  Object.keys(reactHooks.configs.flat.recommended.rules)
+    .filter((rule) => !['react-hooks/rules-of-hooks', 'react-hooks/exhaustive-deps'].includes(rule))
+    .map((rule) => [rule, 'warn']),
+);
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-];
-
-export default eslintConfig;
+export default [...nextVitals, ...nextTypescript, { rules: compilerDiagnostics }];

@@ -28,5 +28,5 @@ export async function POST(request: Request) {
   }
 
   await createSession(user.id);
-  return NextResponse.json({ user: { id: user.id, username: user.username, profile: user.profile } });
+  return NextResponse.json({ user: { id: user.id, username: user.username, role: user.role, profile: user.profile } });
 }

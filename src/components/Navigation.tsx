@@ -19,6 +19,7 @@ const Navigation: React.FC = () => {
   };
 
   const navItems = [
+    { path: '/exercises', label: 'Bài tập tiếng Anh', icon: '🌟', activeBg: 'bg-sky-blue hover:bg-sky-blue/90', activeShadow: 'shadow-[0_1px_0_0_#2563EB]' },
     { path: '/', label: 'Học các môn', icon: '📚', activeBg: 'bg-coral-orange hover:bg-coral-orange/90', activeShadow: 'shadow-[0_1px_0_0_#DC2626]' },
     { path: '/typing', label: 'Luyện gõ phím', icon: '⌨️', activeBg: 'bg-sky-blue hover:bg-sky-blue/90', activeShadow: 'shadow-[0_1px_0_0_#2563EB]' },
     { path: '/parents', label: 'Góc phụ huynh', icon: '👨‍👩‍👧‍👦', activeBg: 'bg-dino-green hover:bg-dino-green/90', activeShadow: 'shadow-[0_1px_0_0_#16A34A]' },
@@ -72,4 +73,3 @@ const Navigation: React.FC = () => {
 };
 
 export default Navigation;
-

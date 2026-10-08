@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import DinoMascot from './DinoMascot';
+
 
 interface Bubble {
   id: string;

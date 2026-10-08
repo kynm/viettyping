@@ -2,19 +2,36 @@
   "name": "typing",
   "version": "0.1.0",
   "private": true,
+  "overrides": {
+    "postcss": "^8.5.16",
+    "@eslint/eslintrc": {
+      "minimatch": {
+        "brace-expansion": "^1.1.15"
+      }
+    },
+    "exceljs": {
+      "uuid": "11.1.1"
+    }
+  },
   "author": "Nguyễn Bá Tuấn Anh <anhnbt.it@gmail.com> (http://github.com/anhnbt)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "clean": "rm -rf .next",
+    "lint": "eslint src",
+    "clean": "node scripts/clean.cjs",
     "test": "jest",
     "test:watch": "jest --watch",
+    "typecheck": "tsc --noEmit",
+    "seed:exercises": "node scripts/seed-exercises.cjs",
+    "test:exercise:api": "node scripts/test-exercise-api.cjs",
+    "test:exercise:browser": "node scripts/test-exercise-browser.cjs",
+    "test:exercise:migrations": "node scripts/test-exercise-migrations.cjs",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "deploy": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/deploy.ps1"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -24,12 +41,14 @@
     "@tailwindcss/line-clamp": "^0.4.4",
     "bcryptjs": "^3.0.3",
     "canvas-confetti": "^1.9.4",
+    "exceljs": "^4.4.0",
     "framer-motion": "^12.34.0",
     "lucide-react": "^1.16.0",
-    "next": "^16.2.10",
+    "next": "16.4.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.6.0"
+    "react-icons": "^5.6.0",
+    "sharp": "0.35.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -43,7 +62,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "^16.2.10",
+    "eslint-config-next": "16.4.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "prisma": "^6.19.3",
@@ -52,12 +71,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5"
   },
-  "overrides": {
-    "postcss": "^8.5.16",
-    "@eslint/eslintrc": {
-      "minimatch": {
-        "brace-expansion": "^1.1.15"
-      }
-    }
+  "engines": {
+    "node": ">=20.9.0"
   }
 }

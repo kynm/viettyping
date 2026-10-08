@@ -18,10 +18,17 @@ export function validateSameOriginRequest(request: Request) {
 
   const origin = request.headers.get('origin');
   const referer = request.headers.get('referer');
-  const expectedOrigin = new URL(request.url).origin;
+  const expectedOrigin = process.env.APP_ORIGIN || process.env.EXERCISE_ORIGIN || new URL(request.url).origin;
+  if (request.headers.get('sec-fetch-site') === 'cross-site') return forbidden();
 
   if (origin) return origin === expectedOrigin ? null : forbidden();
-  if (referer) return new URL(referer).origin === expectedOrigin ? null : forbidden();
+  if (referer) {
+    try {
+      return new URL(referer).origin === expectedOrigin ? null : forbidden();
+    } catch {
+      return forbidden();
+    }
+  }
 
   return process.env.NODE_ENV === 'production' ? forbidden() : null;
 }
