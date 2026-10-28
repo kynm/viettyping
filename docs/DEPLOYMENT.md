@@ -30,6 +30,30 @@ Script `scripts/deploy.ps1` chạy tuần tự, kiểm tra exit code từng bư�
 script dừng; sửa lỗi rồi chạy lại. Không khởi động một build chưa hoàn thành.
 PM2 save lưu danh sách process; vẫn cần cơ chế khởi động PM2 khi Windows restart.
 
+## Tự khởi động trên Windows
+
+Chạy một lần bằng tài khoản Windows vận hành ứng dụng (không cần Administrator):
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/install-windows-startup.ps1
+```
+
+Installer tạo `EasyTyping.vbs` trong Startup của tài khoản hiện tại, dùng đường dẫn
+Node/PM2 tuyệt đối và chạy nền khi đăng nhập Windows. Trong Laragon, bật Run at
+startup và Start All automatically để MySQL cũng chạy khi đăng nhập. Cơ chế này
+chạy sau khi đăng nhập, không phục vụ trước màn hình đăng nhập Windows.
+
+`scripts/start-windows.ps1` chờ truy vấn MySQL thành công, gọi PM2 bằng file JavaScript
+thực (tránh lỗi Node đọc `npm.cmd`), kiểm tra `/login`, rồi lưu PM2. Gọi lại script
+không tạo thêm instance ứng dụng. Bản build phải có sẵn; startup không tự build hoặc
+migrate dữ liệu. Dùng `start-easytyping.cmd` để khởi động thủ công cùng quy trình.
+
+Log: `%LOCALAPPDATA%\EasyTyping\logs\startup.log`. Truy cập
+`http://localhost:3000`. Domain Laragon mặc định trỏ vào thư mục mã nguồn sẽ trả 403;
+muốn dùng domain riêng cần cấu hình Apache reverse proxy tới cổng 3000.
+
+Để tắt tự khởi động, xóa `EasyTyping.vbs` trong thư mục mở bằng `shell:startup`.
+
 ## Kiểm tra và xử lý lỗi
 
 ```powershell
